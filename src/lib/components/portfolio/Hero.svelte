@@ -3,55 +3,126 @@
   import { fade, fly } from 'svelte/transition';
 
   let mounted = false;
+  let codeLines = [
+    'const developer = {',
+    '  name: "Roger Cedeño",',
+    '  role: "Full Stack Developer",',
+    '  skills: ["React", "NestJS", "Python"]',
+    '};'
+  ];
+  let displayedCode = '';
+  let currentLine = 0;
+  let currentChar = 0;
+  let showCursor = true;
 
   onMount(() => {
     mounted = true;
+    typeCode();
+    
+    // Animación del cursor parpadeante
+    const cursorInterval = setInterval(() => {
+      showCursor = !showCursor;
+    }, 530);
+    
+    return () => clearInterval(cursorInterval);
   });
+
+  function typeCode() {
+    if (currentLine >= codeLines.length) {
+      // Reiniciar después de un delay
+      setTimeout(() => {
+        displayedCode = '';
+        currentLine = 0;
+        currentChar = 0;
+        typeCode();
+      }, 3000);
+      return;
+    }
+
+    const line = codeLines[currentLine];
+    if (currentChar < line.length) {
+      displayedCode += line[currentChar];
+      currentChar++;
+      setTimeout(typeCode, 80);
+    } else {
+      displayedCode += '\n';
+      currentLine++;
+      currentChar = 0;
+      setTimeout(typeCode, 300);
+    }
+  }
 </script>
 
-<div class="relative w-full h-[150px] sm:h-[180px] md:h-[200px] overflow-hidden bg-gray-50 border-b border-gray-100">
-  <div class="absolute inset-0 flex items-center justify-center opacity-20">
+<div class="relative w-full h-[180px] sm:h-[220px] md:h-[260px] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700">
+  <div class="absolute inset-0 flex items-center justify-center">
     {#if mounted}
-      <div class="relative w-48 h-36 sm:w-56 sm:h-42 md:w-64 md:h-48" transition:fade={{ duration: 400 }}>
-        <!-- Minimalist laptop -->
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-3/4 bg-gray-300 rounded border border-gray-400">
-          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[95%] h-[85%] bg-gray-200 rounded-t border border-gray-400">
-            <div class="p-3 space-y-1.5 mt-2">
-              <div class="h-1 bg-gray-400 rounded w-3/4"></div>
-              <div class="h-1 bg-gray-400 rounded w-1/2"></div>
-              <div class="h-1 bg-gray-400 rounded w-5/6"></div>
+      <div class="relative w-full max-w-4xl px-4" transition:fade={{ duration: 600 }}>
+        <!-- Laptop con pantalla animada -->
+        <div class="relative mx-auto" style="width: min(90vw, 600px);">
+          <!-- Pantalla de la laptop -->
+          <div 
+            class="relative bg-gray-900 rounded-t-lg border-4 border-gray-700 shadow-2xl"
+            style="padding-top: 60%;"
+            transition:fly={{ y: -20, duration: 800, delay: 200 }}
+          >
+            <div class="absolute inset-0 p-4 sm:p-6">
+              <!-- Barra de título del editor -->
+              <div class="flex items-center gap-2 mb-3">
+                <div class="flex gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div class="flex-1 h-4 bg-gray-800 rounded text-xs text-gray-500 px-2 flex items-center">
+                  portfolio.js
+                </div>
+              </div>
+              
+              <!-- Código escribiéndose -->
+              <div class="font-mono text-xs sm:text-sm text-green-400 leading-relaxed">
+                <pre class="whitespace-pre-wrap">{displayedCode}<span class="inline-block w-2 h-4 bg-green-400 ml-1" style="opacity: {showCursor ? 1 : 0};"></span></pre>
+              </div>
             </div>
+            
+            <!-- Brillo de la pantalla -->
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-t-lg"></div>
+          </div>
+          
+          <!-- Base de la laptop -->
+          <div 
+            class="relative bg-gray-800 rounded-b-lg border-4 border-gray-700 border-t-0 h-2 shadow-xl"
+            transition:fly={{ y: 20, duration: 800, delay: 400 }}
+          >
+            <!-- Trackpad -->
+            <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gray-700 rounded"></div>
           </div>
         </div>
       </div>
     {/if}
   </div>
+  
+  <!-- Efectos de fondo -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-10 left-10 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
+    <div class="absolute top-20 right-20 w-1.5 h-1.5 bg-blue-400 rounded-full opacity-40 animate-pulse" style="animation-delay: 0.5s;"></div>
+    <div class="absolute bottom-20 left-1/4 w-1 h-1 bg-purple-400 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
+  </div>
 </div>
 
 <style>
-  @keyframes float {
+  @keyframes pulse {
     0%, 100% {
-      transform: translateY(0) translateX(0);
-      opacity: 0.6;
+      opacity: 0.4;
+      transform: scale(1);
     }
     50% {
-      transform: translateY(-20px) translateX(10px);
       opacity: 1;
+      transform: scale(1.2);
     }
   }
-
-  @keyframes draw {
-    from {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-    }
-    to {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 0;
-    }
-  }
-
-  .animate-draw {
-    animation: draw 3s ease-in-out infinite;
+  
+  .animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
   }
 </style>
+
