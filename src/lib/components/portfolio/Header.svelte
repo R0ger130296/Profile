@@ -14,48 +14,49 @@
   });
 </script>
 
-<header class="relative bg-transparent py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-4xl mx-auto">
+<header class="relative bg-transparent py-2 sm:py-3 px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto">
     {#if mounted && personalInfo}
       <div
-        class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left"
+        class="flex flex-row items-center justify-between gap-2 sm:gap-4"
         transition:fade={{ duration: 400 }}
       >
-        <div class="flex-1">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
           <h1
-            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-gray-900 tracking-tight"
+            class="text-base sm:text-lg md:text-xl font-bold text-gray-900 tracking-tight truncate"
             transition:fade={{ duration: 400, delay: 200 }}
           >
             {personalInfo.name}
           </h1>
+          <span class="hidden md:inline text-gray-300 text-sm">|</span>
           <p
-            class="text-base sm:text-lg md:text-xl text-gray-600 font-medium"
+            class="hidden md:block text-xs sm:text-sm text-gray-600 font-medium truncate"
             transition:fade={{ duration: 400, delay: 300 }}
           >
             {personalInfo.title}
           </p>
         </div>
-      </div>
 
-      <div
-        class="flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3 mt-4 sm:mt-6"
-        transition:fade={{ duration: 400, delay: 400 }}
-      >
-        <ContactLink
-          type="email"
-          value={personalInfo.email}
-          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
-        />
-        <ContactLink
-          type="phone"
-          value={personalInfo.phone}
-          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
-        />
-        <ContactLink
-          type="location"
-          value={personalInfo.location}
-          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
-        />
+        <div
+          class="flex items-center gap-1 sm:gap-1.5 flex-shrink-0"
+          transition:fade={{ duration: 400, delay: 400 }}
+        >
+          <ContactLink
+            type="email"
+            value={personalInfo.email}
+            className="text-gray-600 hover:text-primary-600 text-xs px-2 py-1 rounded-md hover:bg-primary-50 transition-all duration-200 whitespace-nowrap"
+          />
+          <ContactLink
+            type="phone"
+            value={personalInfo.phone}
+            className="hidden sm:inline-flex text-gray-600 hover:text-primary-600 text-xs px-2 py-1 rounded-md hover:bg-primary-50 transition-all duration-200 whitespace-nowrap"
+          />
+          <ContactLink
+            type="location"
+            value={personalInfo.location}
+            className="hidden md:inline-flex text-gray-600 hover:text-primary-600 text-xs px-2 py-1 rounded-md hover:bg-primary-50 transition-all duration-200 whitespace-nowrap"
+          />
+        </div>
       </div>
     {/if}
   </div>

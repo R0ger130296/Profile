@@ -65,15 +65,15 @@
 
 <div class="min-h-screen bg-white">
   <!-- Header fijo sobre el Hero -->
-  <div class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-soft">
+  <nav class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
     <Header />
-  </div>
+  </nav>
 
   <!-- Hero como sección completa -->
   <Hero />
 
   <!-- Contenido principal -->
-  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 space-y-12 sm:space-y-16 -mt-20 sm:-mt-24 relative z-10">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 space-y-12 sm:space-y-16 pt-20 sm:pt-24 relative z-10">
     <div class="section-content initially-visible">
       <About />
     </div>

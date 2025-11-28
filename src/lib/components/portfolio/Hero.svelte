@@ -53,7 +53,7 @@
   }
 </script>
 
-<section class="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20 sm:pt-24">
+<section class="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-16 sm:pt-20">
   <div class="absolute inset-0 flex items-center justify-center">
     {#if mounted}
       <div class="relative w-full max-w-4xl px-4" transition:fade={{ duration: 600 }}>
