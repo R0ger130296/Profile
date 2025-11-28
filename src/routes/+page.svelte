@@ -8,7 +8,6 @@
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
   import Languages from '$lib/components/portfolio/Languages.svelte';
   import References from '$lib/components/portfolio/References.svelte';
-  import Projects from '$lib/components/portfolio/Projects.svelte';
   import { ScrollToTop } from '$lib/components/ui';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
@@ -102,9 +101,6 @@
     </div>
     <div class="section-content initially-visible">
       <Skills />
-    </div>
-    <div class="section-content initially-visible">
-      <Projects />
     </div>
     <div class="section-content initially-visible">
       <Certifications />
