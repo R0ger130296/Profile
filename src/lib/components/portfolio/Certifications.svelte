@@ -122,13 +122,16 @@
     transition:fade={{ duration: 200 }}
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
     on:click={closeModal}
+    on:keydown={(e) => e.key === 'Escape' && closeModal()}
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-title"
+    tabindex="-1"
   >
     <div
       class="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
       on:click|stopPropagation
+      role="document"
       transition:fly={{ y: 20, duration: 300 }}
     >
       <!-- Header del modal -->
@@ -198,6 +201,7 @@
   :global(.line-clamp-2) {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
