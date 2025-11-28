@@ -1,7 +1,7 @@
 <script lang="ts">
   import { references } from '$lib/data/portfolio';
   import { Section, Card, ContactLink } from '$lib/components/ui';
-  import { fly, scale } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
   let visible = false;
@@ -15,10 +15,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {#each references as ref, index (ref.id)}
       {#if visible}
-        <div
-          transition:fly={{ y: 30, duration: 600, delay: index * 150 }}
-          transition:scale={{ duration: 400, delay: index * 150 }}
-        >
+        <div transition:fly={{ y: 30, duration: 600, delay: index * 150 }}>
           <Card
             padding="lg"
             elevation="sm"

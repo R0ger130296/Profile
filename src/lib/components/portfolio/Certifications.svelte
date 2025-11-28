@@ -1,7 +1,7 @@
 <script lang="ts">
   import { certifications } from '$lib/data/portfolio';
   import { Section, Card, Icon } from '$lib/components/ui';
-  import { fly, scale } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
   let visible = false;
@@ -15,10 +15,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     {#each certifications as cert, index (cert.id)}
       {#if visible}
-        <div
-          transition:fly={{ y: 20, duration: 500, delay: index * 50 }}
-          transition:scale={{ duration: 400, delay: index * 50 }}
-        >
+        <div transition:fly={{ y: 20, duration: 500, delay: index * 50 }}>
           <Card
             padding="md"
             elevation="sm"
