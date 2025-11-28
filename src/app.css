@@ -1,18 +1,78 @@
-/* Tailwind CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-/* Variables CSS personalizadas */
-:root {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-secondary: #10b981;
-  --color-secondary-dark: #059669;
-  --color-text: #1f2937;
-  --color-text-light: #6b7280;
-  --color-bg: #ffffff;
-  --color-bg-light: #f9fafb;
+@theme {
+  /* 🎨 Paleta de colores Primary */
+  --color-primary-50: rgb(239, 246, 255);
+  --color-primary-100: rgb(219, 234, 254);
+  --color-primary-200: rgb(191, 219, 254);
+  --color-primary-300: rgb(147, 197, 253);
+  --color-primary-400: rgb(96, 165, 250);
+  --color-primary-500: rgb(59, 130, 246);
+  --color-primary-600: rgb(37, 99, 235);
+  --color-primary-700: rgb(29, 78, 216);
+  --color-primary-800: rgb(30, 64, 175);
+  --color-primary-900: rgb(30, 58, 138);
+  --color-primary: var(--color-primary-500);
+  --color-primary-dark: var(--color-primary-600);
+
+  /* 🎨 Paleta de colores Secondary */
+  --color-secondary-50: rgb(236, 253, 245);
+  --color-secondary-100: rgb(209, 250, 229);
+  --color-secondary-200: rgb(167, 243, 208);
+  --color-secondary-300: rgb(110, 231, 183);
+  --color-secondary-400: rgb(52, 211, 153);
+  --color-secondary-500: rgb(16, 185, 129);
+  --color-secondary-600: rgb(5, 150, 105);
+  --color-secondary-700: rgb(4, 120, 87);
+  --color-secondary-800: rgb(6, 95, 70);
+  --color-secondary-900: rgb(6, 78, 59);
+  --color-secondary: var(--color-secondary-500);
+  --color-secondary-dark: var(--color-secondary-600);
+
+  /* 🎨 Paleta de colores Accent */
+  --color-accent-50: rgb(250, 245, 255);
+  --color-accent-100: rgb(243, 232, 255);
+  --color-accent-200: rgb(233, 213, 255);
+  --color-accent-300: rgb(216, 180, 254);
+  --color-accent-400: rgb(192, 132, 252);
+  --color-accent-500: rgb(168, 85, 247);
+  --color-accent-600: rgb(147, 51, 234);
+  --color-accent-700: rgb(126, 34, 206);
+  --color-accent-800: rgb(107, 33, 168);
+  --color-accent-900: rgb(88, 28, 135);
+  --color-accent: var(--color-accent-500);
+
+  /* 🧱 Fondo y texto */
+  --color-background: rgb(255, 255, 255);
+  --color-background-alt: rgb(249, 250, 251);
+  --color-background-dark: rgb(15, 23, 42);
+
+  --color-text: rgb(31, 41, 55);
+  --color-text-light: rgb(107, 114, 128);
+  --color-text-muted: rgb(100, 116, 139);
+  --color-text-inverse: rgb(255, 255, 255);
+
+  /* ⚙️ Bordes y estados */
+  --color-border: rgb(203, 213, 225);
+  --color-border-light: rgb(226, 232, 240);
+  --color-hover: rgb(241, 245, 249);
+  --color-focus: rgb(191, 219, 254);
+  --color-focus-ring: rgba(59, 130, 246, 0.4);
+
+  /* 🧈 Sombras */
+  --shadow-base: rgba(0, 0, 0, 0.06);
+  --shadow-medium: rgba(0, 0, 0, 0.1);
+  --shadow-large: rgba(0, 0, 0, 0.15);
+
+  /* 🧊 Radios */
+  --radius-base: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* ⚡ Transiciones */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 400ms;
 }
 
 /* Estilos base personalizados */
@@ -81,40 +141,47 @@
   animation: float 3s ease-in-out infinite;
 }
 
-/* Efectos de glassmorphism */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
 }
 
 /* Mejoras de UX/UI */
 @layer utilities {
   /* Sombras mejoradas */
   .shadow-soft {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 8px var(--shadow-base), 0 1px 2px var(--shadow-base);
   }
 
   .shadow-medium {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px var(--shadow-medium), 0 2px 4px var(--shadow-base);
   }
 
   .shadow-large {
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 32px var(--shadow-large), 0 4px 8px var(--shadow-medium);
   }
 
   /* Efectos hover mejorados */
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 24px var(--shadow-large);
   }
 
   .hover-scale {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hover-scale:hover {
@@ -123,11 +190,11 @@
 
   /* Gradientes mejorados */
   .gradient-primary {
-    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -141,17 +208,24 @@
   .animate-slide-up {
     animation: slideUp 0.6s ease-out;
   }
+}
 
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
 
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
