@@ -9,3 +9,4 @@ export { default as Avatar } from './Avatar.svelte';
 export { default as AnimatedSection } from './AnimatedSection.svelte';
 export { default as ImagePlaceholder } from './ImagePlaceholder.svelte';
 export { default as Modal } from './Modal.svelte';
+export { default as Pagination } from './Pagination.svelte';

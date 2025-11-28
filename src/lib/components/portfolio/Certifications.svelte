@@ -1,6 +1,6 @@
 <script lang="ts">
   import { useCertifications } from '$lib/presentation/hooks/usePortfolio';
-  import { Section, Icon } from '$lib/components/ui';
+  import { Section, Icon, Pagination } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
@@ -11,6 +11,8 @@
   let selectedCert: Certification | null = null;
   let showModal = false;
   let originalOverflow = '';
+  let currentPage = 1;
+  const itemsPerPage = 8; // 8 certificados por página
 
   onMount(async () => {
     visible = true;
@@ -45,16 +47,32 @@
       closeModal();
     }
   }
+
+  function handlePageChange(event: CustomEvent<{ page: number; startIndex: number }>) {
+    currentPage = event.detail.page;
+    // Scroll suave hacia arriba de la sección
+    if (browser) {
+      const section = document.querySelector('[data-section="certifications"]');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  $: totalPages = Math.ceil(certifications.length / itemsPerPage);
+  $: startIndex = (currentPage - 1) * itemsPerPage;
+  $: endIndex = startIndex + itemsPerPage;
+  $: paginatedCertifications = certifications.slice(startIndex, endIndex);
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
 
 <Section title="Certificaciones">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-    {#each certifications as cert, index (cert.id)}
+  <div data-section="certifications" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+    {#each paginatedCertifications as cert, index (cert.id)}
       {#if visible}
         <div
-          transition:fly={{ y: 20, duration: 500, delay: index * 50 }}
+          transition:fly={{ y: 20, duration: 500, delay: index * 30 }}
           class="group cursor-pointer"
           on:click={() => openModal(cert)}
           role="button"
@@ -135,6 +153,15 @@
       {/if}
     {/each}
   </div>
+
+  <!-- Paginación -->
+  <Pagination
+    bind:currentPage={currentPage}
+    {totalPages}
+    {itemsPerPage}
+    totalItems={certifications.length}
+    on:pageChange={handlePageChange}
+  />
 </Section>
 
 <!-- Modal para ver certificado en tamaño completo -->

@@ -1,14 +1,17 @@
 <script lang="ts">
   import { useExperiences } from '$lib/presentation/hooks/usePortfolio';
-  import { Section, Icon, Modal } from '$lib/components/ui';
+  import { Section, Icon, Modal, Pagination } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
   import type { Experience } from '$lib/domain/entities';
 
   let visible = false;
   let experiences: Experience[] = [];
   let selectedExperience: Experience | null = null;
   let showModal = false;
+  let currentPage = 1;
+  const itemsPerPage = 3; // 3 experiencias por página
 
   onMount(async () => {
     visible = true;
@@ -37,11 +40,27 @@
     if (!selectedExperience) return '';
     return `${selectedExperience.company} • ${selectedExperience.location} • ${selectedExperience.startDate} - ${selectedExperience.endDate}`;
   }
+
+  function handlePageChange(event: CustomEvent<{ page: number; startIndex: number }>) {
+    currentPage = event.detail.page;
+    // Scroll suave hacia arriba de la sección
+    if (browser) {
+      const section = document.querySelector('[data-section="experience"]');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
+  $: totalPages = Math.ceil(experiences.length / itemsPerPage);
+  $: startIndex = (currentPage - 1) * itemsPerPage;
+  $: endIndex = startIndex + itemsPerPage;
+  $: paginatedExperiences = experiences.slice(startIndex, endIndex);
 </script>
 
 <Section title="Experiencia Profesional">
-  <div class="space-y-4 sm:space-y-6">
-    {#each experiences as experience, index (experience.id)}
+  <div data-section="experience" class="space-y-4 sm:space-y-6">
+    {#each paginatedExperiences as experience, index (experience.id)}
       {#if visible}
         <div
           transition:fade={{ duration: 300, delay: index * 50 }}
@@ -85,6 +104,15 @@
       {/if}
     {/each}
   </div>
+
+  <!-- Paginación -->
+  <Pagination
+    bind:currentPage={currentPage}
+    {totalPages}
+    {itemsPerPage}
+    totalItems={experiences.length}
+    on:pageChange={handlePageChange}
+  />
 </Section>
 
 <!-- Modal para ver detalles completos -->
