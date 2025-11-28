@@ -1,6 +1,6 @@
 <script lang="ts">
   import { education } from '$lib/data/portfolio';
-  import { Section, Card, Badge } from '$lib/components/ui';
+  import { Section, Card, Badge, Icon } from '$lib/components/ui';
   import { fly } from 'svelte/transition';
   import { onMount } from 'svelte';
 
@@ -23,7 +23,7 @@
           >
             <div class="mb-4">
               <div class="w-12 h-12 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <span class="text-2xl">🎓</span>
+                <Icon name="GraduationCap" size={28} color="white" />
               </div>
               <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary-600 transition-colors">
                 {edu.degree}
@@ -33,19 +33,7 @@
                 <Badge variant="secondary" className="mb-3">{edu.location}</Badge>
               {/if}
               <div class="flex items-center gap-2 text-sm text-gray-500">
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
+                <Icon name="Calendar" size={16} />
                 <span class="font-medium">{edu.startDate} - {edu.endDate}</span>
               </div>
             </div>

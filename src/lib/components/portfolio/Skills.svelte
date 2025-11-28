@@ -1,6 +1,6 @@
 <script lang="ts">
   import { skills, softSkills } from '$lib/data/portfolio';
-  import { Section, Badge } from '$lib/components/ui';
+  import { Section, Badge, Icon } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
@@ -57,7 +57,9 @@
       transition:fade={{ duration: 600, delay: 500 }}
     >
       <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-        <span class="text-3xl">🌟</span>
+        <div class="w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center">
+          <Icon name="Star" size={24} color="white" />
+        </div>
         Habilidades Blandas
       </h3>
       <div class="flex flex-wrap gap-3">

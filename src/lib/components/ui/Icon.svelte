@@ -12,6 +12,12 @@
   import GraduationCap from 'lucide-svelte/icons/graduation-cap';
   import Code from 'lucide-svelte/icons/code';
   import Check from 'lucide-svelte/icons/check';
+  import ChevronRight from 'lucide-svelte/icons/chevron-right';
+  import Calendar from 'lucide-svelte/icons/calendar';
+  import Rocket from 'lucide-svelte/icons/rocket';
+  import Target from 'lucide-svelte/icons/target';
+  import Star from 'lucide-svelte/icons/star';
+  import Sparkles from 'lucide-svelte/icons/sparkles';
 
   // Mapeo de nombres a componentes
   const iconMap: Record<string, any> = {
@@ -26,7 +32,13 @@
     Briefcase,
     GraduationCap,
     Code,
-    Check
+    Check,
+    ChevronRight,
+    Calendar,
+    Rocket,
+    Target,
+    Star,
+    Sparkles
   };
 
   export let name: string;
