@@ -8,3 +8,4 @@ export { default as Badge } from './Badge.svelte';
 export { default as Avatar } from './Avatar.svelte';
 export { default as AnimatedSection } from './AnimatedSection.svelte';
 export { default as ImagePlaceholder } from './ImagePlaceholder.svelte';
+export { default as Modal } from './Modal.svelte';

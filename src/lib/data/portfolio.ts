@@ -153,33 +153,45 @@ export const education: Education[] = [
   }
 ];
 
+// Habilidades con niveles basados en experiencia (0-100)
 export const skills = {
   frontend: [
-    'React',
-    'React Native',
-    'Expo',
-    'Next.js',
-    'Angular',
-    'Angular CLI',
-    'HTML5',
-    'CSS',
-    'Tailwind CSS',
-    'Micro-Frontend'
+    { name: 'React', level: 90 },
+    { name: 'Next.js', level: 85 },
+    { name: 'Angular', level: 80 },
+    { name: 'Angular CLI', level: 80 },
+    { name: 'React Native', level: 75 },
+    { name: 'Expo', level: 70 },
+    { name: 'Tailwind CSS', level: 85 },
+    { name: 'HTML5', level: 90 },
+    { name: 'CSS', level: 85 },
+    { name: 'Micro-Frontend', level: 70 }
   ],
-  backend: ['NestJS', 'Spring Framework', 'Python'],
-  mobile: ['React Native', 'Flutter'],
+  backend: [
+    { name: 'NestJS', level: 85 },
+    { name: 'Spring Framework', level: 80 },
+    { name: 'Python', level: 75 }
+  ],
+  mobile: [
+    { name: 'React Native', level: 75 },
+    { name: 'Flutter', level: 65 }
+  ],
   tools: [
-    'Git',
-    'GitHub',
-    'Bitbucket',
-    'GitFlow',
-    'Jira',
-    'Swagger',
-    'Visual Studio',
-    'Windows',
-    'Discord'
+    { name: 'Git', level: 90 },
+    { name: 'GitHub', level: 90 },
+    { name: 'Bitbucket', level: 85 },
+    { name: 'GitFlow', level: 80 },
+    { name: 'Jira', level: 85 },
+    { name: 'Swagger', level: 80 },
+    { name: 'Visual Studio', level: 85 },
+    { name: 'Windows', level: 90 },
+    { name: 'Discord', level: 70 }
   ],
-  methodologies: ['SCRUM', 'PMP', 'Principios SOLID']
+  methodologies: [
+    { name: 'SCRUM', level: 85 },
+    { name: 'PMP', level: 75 },
+    { name: 'Principios SOLID', level: 80 }
+  ]
 };
 
 export const softSkills = [

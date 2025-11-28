@@ -1,43 +1,43 @@
 <script lang="ts">
-  import { experiences } from '$lib/data/portfolio';
-  import { Section, Icon } from '$lib/components/ui';
+  import { useExperiences } from '$lib/presentation/hooks/usePortfolio';
+  import { Section, Icon, Modal } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
-  import type { Experience } from '$lib/data/portfolio';
+  import type { Experience } from '$lib/domain/entities';
 
   let visible = false;
+  let experiences: Experience[] = [];
   let selectedExperience: Experience | null = null;
   let showModal = false;
 
-  onMount(() => {
+  onMount(async () => {
     visible = true;
+    experiences = await useExperiences();
   });
 
   function openModal(experience: Experience) {
     selectedExperience = experience;
     showModal = true;
-    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     showModal = false;
     selectedExperience = null;
-    document.body.style.overflow = '';
   }
 
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape' && showModal) {
-      closeModal();
-    }
-  }
-
-  // Función para obtener las responsabilidades más importantes (primeras 3-4)
   function getMainResponsibilities(responsibilities: string[]): string[] {
     return responsibilities.slice(0, 3);
   }
-</script>
 
-<svelte:window onkeydown={handleKeydown} />
+  function getModalTitle(): string {
+    return selectedExperience?.title || '';
+  }
+
+  function getModalSubtitle(): string {
+    if (!selectedExperience) return '';
+    return `${selectedExperience.company} • ${selectedExperience.location} • ${selectedExperience.startDate} - ${selectedExperience.endDate}`;
+  }
+</script>
 
 <Section title="Experiencia Profesional">
   <div class="space-y-4 sm:space-y-6">
@@ -88,57 +88,26 @@
 </Section>
 
 <!-- Modal para ver detalles completos -->
-{#if showModal && selectedExperience}
-  <div
-    transition:fade={{ duration: 200 }}
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
-    on:click={closeModal}
-    on:keydown={(e) => e.key === 'Escape' && closeModal()}
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-    tabindex="-1"
-  >
-    <div
-      class="relative max-w-3xl w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
-      on:click|stopPropagation
-      role="document"
-      transition:fly={{ y: 20, duration: 300 }}
-    >
-      <!-- Header del modal -->
-      <div class="flex items-center justify-between p-5 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-secondary-50">
-        <div class="flex-1 pr-4">
-          <h3 id="modal-title" class="text-lg sm:text-xl font-bold text-gray-900 mb-1">
-            {selectedExperience.title}
-          </h3>
-          <p class="text-sm sm:text-base text-gray-600">{selectedExperience.company}</p>
-          <p class="text-xs sm:text-sm text-gray-500 mt-1">
-            {selectedExperience.location} • {selectedExperience.startDate} - {selectedExperience.endDate}
-          </p>
-        </div>
-        <button
-          on:click={closeModal}
-          class="flex-shrink-0 w-9 h-9 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
-          aria-label="Cerrar modal"
-        >
-          <Icon name="X" size={18} color="#374151" />
-        </button>
-      </div>
-
-      <!-- Contenido del modal -->
-      <div class="p-5 sm:p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-        <h4 class="text-base font-semibold text-gray-900 mb-4">Responsabilidades y Logros:</h4>
-        <ul class="space-y-2.5">
-          {#each selectedExperience.responsibilities as responsibility}
-            <li class="flex items-start gap-3 text-sm sm:text-base text-gray-700 leading-relaxed">
-              <span class="text-primary-500 mt-1.5 flex-shrink-0">
-                <Icon name="CheckCircle" size={18} color="currentColor" />
-              </span>
-              <span>{responsibility}</span>
-            </li>
-          {/each}
-        </ul>
-      </div>
+<Modal
+  bind:isOpen={showModal}
+  title={getModalTitle()}
+  subtitle={getModalSubtitle()}
+  maxWidth="max-w-3xl"
+  on:close={closeModal}
+>
+  {#if selectedExperience}
+    <div>
+      <h4 class="text-base font-semibold text-gray-900 mb-4">Responsabilidades y Logros:</h4>
+      <ul class="space-y-2.5">
+        {#each selectedExperience.responsibilities as responsibility}
+          <li class="flex items-start gap-3 text-sm sm:text-base text-gray-700 leading-relaxed">
+            <span class="text-primary-500 mt-1.5 flex-shrink-0">
+              <Icon name="CheckCircle" size={18} color="currentColor" />
+            </span>
+            <span>{responsibility}</span>
+          </li>
+        {/each}
+      </ul>
     </div>
-  </div>
-{/if}
+  {/if}
+</Modal>
