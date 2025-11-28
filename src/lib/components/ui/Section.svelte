@@ -15,7 +15,7 @@
     <Card {padding} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
       {#if title}
         <h2
-          class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 mb-8 pb-4 border-b-4 border-gradient-to-r from-primary-200 to-secondary-200 relative"
+          class="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 sm:border-b-4 border-gradient-to-r from-primary-200 to-secondary-200 relative"
         >
           <span class="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary-500 to-secondary-500 rounded-full"></span>
           {title}
@@ -26,7 +26,7 @@
   {:else}
     {#if title}
       <h2
-        class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 mb-8 pb-4 border-b-4 border-gradient-to-r from-primary-200 to-secondary-200"
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600 mb-6 sm:mb-8 pb-3 sm:pb-4 border-b-2 sm:border-b-4 border-gradient-to-r from-primary-200 to-secondary-200"
       >
         {title}
       </h2>

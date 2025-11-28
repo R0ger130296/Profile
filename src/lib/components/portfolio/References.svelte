@@ -12,7 +12,7 @@
 </script>
 
 <Section title="Referencias">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
     {#each references as ref, index (ref.id)}
       {#if visible}
         <div transition:fly={{ y: 30, duration: 600, delay: index * 150 }}>
@@ -23,7 +23,7 @@
           >
             <div class="mb-4">
               <div
-                class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold text-xl mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300"
+                class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold text-lg sm:text-xl mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300"
               >
                 {ref.name
                   .split(' ')
@@ -32,11 +32,11 @@
                   .toUpperCase()
                   .slice(0, 2)}
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+              <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
                 {ref.name}
               </h3>
-              <p class="text-primary-600 font-semibold mb-1">{ref.position}</p>
-              <p class="text-sm text-gray-500 mb-4">{ref.company}</p>
+              <p class="text-sm sm:text-base text-primary-600 font-semibold mb-1">{ref.position}</p>
+              <p class="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">{ref.company}</p>
             </div>
             <div class="flex flex-col gap-3">
               <ContactLink

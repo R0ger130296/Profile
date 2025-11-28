@@ -33,27 +33,27 @@
               elevation="sm"
               className="border-l-4 border-primary-500 hover:border-primary-600 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50"
             >
-              <div class="mb-6">
-                <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div class="mb-4 sm:mb-6">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
                   <div class="flex-1">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{experience.title}</h3>
-                    <div class="flex items-center gap-3 mb-3">
-                      <p class="text-xl text-primary-600 font-semibold">{experience.company}</p>
-                      <Badge variant="info" className="animate-pulse-slow">{experience.location}</Badge>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{experience.title}</h3>
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                      <p class="text-lg sm:text-xl text-primary-600 font-semibold">{experience.company}</p>
+                      <Badge variant="info" className="animate-pulse-slow text-xs sm:text-sm">{experience.location}</Badge>
                     </div>
                   </div>
                   <div
-                    class="px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg font-semibold shadow-lg"
+                    class="px-3 sm:px-4 py-2 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-lg font-semibold shadow-lg text-sm sm:text-base whitespace-nowrap"
                   >
                     {experience.startDate} - {experience.endDate}
                   </div>
                 </div>
               </div>
 
-              <ul class="space-y-3">
+              <ul class="space-y-2 sm:space-y-3">
                 {#each experience.responsibilities as responsibility, i}
                   <li
-                    class="flex items-start gap-3 text-gray-700 leading-relaxed"
+                    class="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 leading-relaxed"
                     transition:fade={{ duration: 400, delay: (index * 100) + (i * 50) }}
                   >
                     <span class="text-primary-500 font-bold mt-1 flex-shrink-0">▸</span>

@@ -18,6 +18,8 @@
   import Target from 'lucide-svelte/icons/target';
   import Star from 'lucide-svelte/icons/star';
   import Sparkles from 'lucide-svelte/icons/sparkles';
+  import X from 'lucide-svelte/icons/x';
+  import Download from 'lucide-svelte/icons/download';
 
   // Mapeo de nombres a componentes
   const iconMap: Record<string, any> = {
@@ -38,7 +40,9 @@
     Rocket,
     Target,
     Star,
-    Sparkles
+    Sparkles,
+    X,
+    Download
   };
 
   export let name: string;

@@ -12,7 +12,7 @@
 </script>
 
 <header
-  class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-16 px-8 mb-12 shadow-2xl"
+  class="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 shadow-2xl"
 >
   <!-- Background decorative elements -->
   <div class="absolute inset-0 overflow-hidden">
@@ -29,7 +29,7 @@
   <div class="relative max-w-6xl mx-auto z-10">
     {#if mounted}
       <div
-        class="flex items-center gap-8 mb-10 md:flex-col md:text-center"
+        class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-8 sm:mb-10 text-center sm:text-left"
         transition:fly={{ y: 30, duration: 800 }}
       >
         <div transition:scale={{ duration: 600, delay: 200 }}>
@@ -37,13 +37,13 @@
         </div>
         <div class="flex-1">
           <h1
-            class="text-5xl md:text-4xl font-extrabold mb-3 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent"
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 sm:mb-3 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent"
             transition:fade={{ duration: 600, delay: 300 }}
           >
             {personalInfo.name}
           </h1>
           <p
-            class="text-2xl md:text-xl font-medium opacity-95 text-white/90"
+            class="text-lg sm:text-xl md:text-2xl font-medium opacity-95 text-white/90"
             transition:fade={{ duration: 600, delay: 400 }}
           >
             {personalInfo.title}
@@ -52,23 +52,23 @@
       </div>
 
       <div
-        class="flex flex-wrap gap-6 md:flex-col md:gap-4"
+        class="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4 md:gap-6"
         transition:fly={{ y: 20, duration: 800, delay: 500 }}
       >
         <ContactLink
           type="email"
           value={personalInfo.email}
-          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300"
+          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
         />
         <ContactLink
           type="phone"
           value={personalInfo.phone}
-          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300"
+          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
         />
         <ContactLink
           type="location"
           value={personalInfo.location}
-          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300"
+          className="text-white hover:text-white/80 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300 text-sm sm:text-base"
         />
       </div>
     {/if}

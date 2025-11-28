@@ -17,7 +17,7 @@
 
 <div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
   <Header />
-  <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12 space-y-12">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-12 md:space-y-16">
     <About />
     <Experience />
     <Education />
@@ -25,12 +25,12 @@
     <Certifications />
     <Languages />
     <References />
-  </div>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-8 mt-16">
-    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
-      <p class="text-gray-400">
+  <footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-8 md:py-12 mt-16 md:mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400 text-sm md:text-base">
         © {new Date().getFullYear()} Roger Cedeño. Desarrollado con ❤️ usando Svelte y Tailwind CSS
       </p>
     </div>
