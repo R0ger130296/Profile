@@ -196,27 +196,27 @@ export const certifications: Certification[] = [
   {
     id: 1,
     name: "NestJS: The Complete Developer's Guide",
-    image: '/certificados/UC-db9f4742-c670-4e62-8135-94901041190f.pdf'
+    image: '/certificados/UC-db9f4742-c670-4e62-8135-94901041190f.jpg'
   },
   {
     id: 2,
     name: 'PMP Preparación Certificación PMP PMBOK 7 [2024]',
-    image: '/certificados/UC-d346666b-bb9e-40bb-bf34-df671435afe3.pdf'
+    image: '/certificados/UC-d346666b-bb9e-40bb-bf34-df671435afe3.jpg'
   },
   {
     id: 3,
     name: 'React Native Expo: Aplicaciones nativas para IOS y Android',
-    image: '/certificados/UC-ade4fb41-0853-4b4d-834d-a5f13a0a86b9.pdf'
+    image: '/certificados/UC-ade4fb41-0853-4b4d-834d-a5f13a0a86b9.jpg'
   },
   {
     id: 4,
     name: 'Principios SOLID y Clean Code',
-    image: '/certificados/UC-c1db414c-1499-45b7-9926-b901a190c9b6.pdf'
+    image: '/certificados/UC-c1db414c-1499-45b7-9926-b901a190c9b6.jpg'
   },
   {
     id: 5,
     name: 'Scrum Foundation Professional Certificate',
-    image: '/certificados/UC-cd24730c-e4b8-41cf-9536-eaee93a85591.pdf'
+    image: '/certificados/UC-cd24730c-e4b8-41cf-9536-eaee93a85591.jpg'
   },
   {
     id: 6,
@@ -226,37 +226,37 @@ export const certifications: Certification[] = [
   {
     id: 7,
     name: 'Micro-Frontend: Arquitectura de Aplicaciones Web Escalables',
-    image: '/certificados/UC-6407e9f7-06f3-40c2-bbde-1f6e97762f21.pdf'
+    image: '/certificados/UC-6407e9f7-06f3-40c2-bbde-1f6e97762f21.jpg'
   },
   {
     id: 8,
     name: 'TanStack Query - Un poderoso gestor de estado asíncrono',
-    image: '/certificados/UC-7bdc1624-c759-49de-a831-6776dd9b5c05.pdf'
+    image: '/certificados/UC-7bdc1624-c759-49de-a831-6776dd9b5c05.jpg'
   },
   {
     id: 9,
     name: 'Angular 14 - La Guia Completa + 15 Proyectos',
-    image: '/certificados/UC-1d588080-981a-4bd6-9491-850f1b85b37c.pdf'
+    image: '/certificados/UC-1d588080-981a-4bd6-9491-850f1b85b37c.jpg'
   },
   {
     id: 10,
     name: 'Python TOTAL - Programador Avanzado en 16 días',
-    image: '/certificados/UC-279f4df5-faa2-405a-819a-64632d64a40e.pdf'
+    image: '/certificados/UC-279f4df5-faa2-405a-819a-64632d64a40e.jpg'
   },
   {
     id: 11,
     name: 'React: De cero a experto (Hooks y MERN)',
-    image: '/certificados/UC-402c1606-b34c-4e46-9624-a431e038bd00.pdf'
+    image: '/certificados/UC-402c1606-b34c-4e46-9624-a431e038bd00.jpg'
   },
   {
     id: 12,
     name: 'Spring Framework 6 & Spring Boot 3 desde cero a experto',
-    image: '/certificados/1744649962733.pdf'
+    image: '/certificados/1744649962733.jpg'
   },
   {
     id: 13,
     name: 'Next.js: El framework de React para producción',
-    image: '/certificados/UC-db9f4742-c670-4e62-8135-94901041190f.pdf'
+    image: '/certificados/UC-db9f4742-c670-4e62-8135-94901041190f.jpg'
   }
 ];
 
@@ -282,13 +282,5 @@ export const references: Reference[] = [
     email: 'perlazajohao@gmail.com',
     phone: '0978970998'
   },
-  {
-    id: 3,
-    name: 'Jennifer Geoconda Barriga Montalvo',
-    position: 'Tngla. Seguridad y Riesgos Laborales',
-    company: 'Freelance',
-    email: 'jenniferbarriga95@gmail.com',
-    phone: '0998699289'
-  }
 ];
 
