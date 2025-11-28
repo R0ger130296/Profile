@@ -49,7 +49,7 @@
           on:keydown={(e) => e.key === 'Enter' && openModal(cert)}
         >
           <div
-            class="relative bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 border border-gray-100"
+            class="relative bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-200"
           >
             <!-- Imagen del certificado -->
             <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">
@@ -110,22 +110,10 @@
             </div>
 
             <!-- Información del certificado -->
-            <div class="p-2 sm:p-3 md:p-4">
-              <h3
-                class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors duration-200 leading-tight"
-              >
+            <div class="p-3 sm:p-4">
+              <h3 class="text-xs sm:text-sm font-medium text-gray-900 line-clamp-2 leading-tight">
                 {cert.name}
               </h3>
-              {#if cert.issuer}
-                <p class="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">{cert.issuer}</p>
-              {/if}
-            </div>
-
-            <!-- Badge de certificado -->
-            <div
-              class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 sm:p-2 shadow-md group-hover:scale-110 transition-transform duration-300"
-            >
-              <Icon name="Award" size={12} color="#6366F1" />
             </div>
           </div>
         </div>

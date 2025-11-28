@@ -12,32 +12,22 @@
 </script>
 
 <Section title="Educación">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+  <div class="space-y-4 sm:space-y-6">
     {#each education as edu, index (edu.id)}
       {#if visible}
-        <div transition:fly={{ y: 30, duration: 600, delay: index * 150 }}>
-          <Card
-            padding="lg"
-            elevation="sm"
-            className="border-l-4 border-secondary-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 bg-gradient-to-br from-white via-white to-secondary-50/30 group"
-          >
-            <div class="mb-4">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Icon name="GraduationCap" size={24} color="white" />
-              </div>
-              <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary-600 transition-colors">
-                {edu.degree}
-              </h3>
-              <p class="text-sm sm:text-base text-primary-600 font-semibold mb-2 sm:mb-3">{edu.institution}</p>
-              {#if edu.location}
-                <Badge variant="secondary" className="mb-2 sm:mb-3 text-xs sm:text-sm">{edu.location}</Badge>
-              {/if}
-              <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
-                <Icon name="Calendar" size={14} />
-                <span class="font-medium">{edu.startDate} - {edu.endDate}</span>
-              </div>
-            </div>
-          </Card>
+        <div
+          class="pb-4 sm:pb-6 border-b border-gray-100 last:border-0"
+          transition:fade={{ duration: 300, delay: index * 50 }}
+        >
+          <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-1">{edu.degree}</h3>
+          <p class="text-sm sm:text-base text-gray-600 mb-1">{edu.institution}</p>
+          <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-500">
+            {#if edu.location}
+              <span>{edu.location}</span>
+              <span>•</span>
+            {/if}
+            <span>{edu.startDate} - {edu.endDate}</span>
+          </div>
         </div>
       {/if}
     {/each}

@@ -10,14 +10,14 @@
   let imageError = false;
 
   const sizes = {
-    sm: 'w-12 h-12 text-lg',
-    md: 'w-20 h-20 text-2xl',
-    lg: 'w-24 h-24 text-3xl',
-    xl: 'w-32 h-32 text-4xl'
+    sm: 'w-12 h-12 text-base',
+    md: 'w-16 h-16 text-lg',
+    lg: 'w-20 h-20 text-xl',
+    xl: 'w-24 h-24 sm:w-28 sm:h-28 text-2xl'
   };
 
   const baseStyles =
-    'rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 shadow-2xl ring-4 ring-white/20 overflow-hidden';
+    'rounded-full flex items-center justify-center font-medium text-gray-700 bg-gray-100 border-2 border-gray-200 overflow-hidden';
 
   $: avatarClass = cn(baseStyles, sizes[size], className);
   $: initials = name
