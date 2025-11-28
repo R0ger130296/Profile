@@ -1,7 +1,7 @@
 <script lang="ts">
   import { usePersonalInfo } from '$lib/presentation/hooks/usePortfolio';
-  import { Avatar, ContactLink } from '$lib/components/ui';
-  import { fly, fade, scale } from 'svelte/transition';
+  import { ContactLink } from '$lib/components/ui';
+  import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
   import type { PersonalInfo } from '$lib/domain/entities';
 
@@ -21,14 +21,6 @@
         class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left"
         transition:fade={{ duration: 400 }}
       >
-        <div transition:scale={{ duration: 400, delay: 100 }}>
-          <Avatar
-            name={personalInfo.name}
-            image="/profile.jpg"
-            size="xl"
-            className="ring-2 ring-gray-200 shadow-sm"
-          />
-        </div>
         <div class="flex-1">
           <h1
             class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-1 sm:mb-2 text-gray-900"

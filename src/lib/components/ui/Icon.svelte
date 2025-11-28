@@ -12,6 +12,7 @@
   import GraduationCap from 'lucide-svelte/icons/graduation-cap';
   import Code from 'lucide-svelte/icons/code';
   import Check from 'lucide-svelte/icons/check';
+  import CheckCircle from 'lucide-svelte/icons/check-circle';
   import ChevronRight from 'lucide-svelte/icons/chevron-right';
   import Calendar from 'lucide-svelte/icons/calendar';
   import Rocket from 'lucide-svelte/icons/rocket';
@@ -35,6 +36,7 @@
     GraduationCap,
     Code,
     Check,
+    CheckCircle,
     ChevronRight,
     Calendar,
     Rocket,

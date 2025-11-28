@@ -58,10 +58,10 @@
     {#if mounted}
       <div class="relative w-full max-w-4xl px-4" transition:fade={{ duration: 600 }}>
         <!-- Laptop con pantalla animada -->
-        <div class="relative mx-auto" style="width: min(90vw, 600px);">
+        <div class="relative mx-auto laptop-container" style="width: min(90vw, 600px);">
           <!-- Pantalla de la laptop -->
           <div 
-            class="relative bg-gray-900 rounded-t-lg border-4 border-gray-700 shadow-2xl"
+            class="relative bg-gray-900 rounded-t-lg border-4 border-gray-700 shadow-2xl laptop-screen"
             style="padding-top: 60%;"
             transition:fly={{ y: -20, duration: 800, delay: 200 }}
           >
@@ -90,7 +90,7 @@
           
           <!-- Base de la laptop -->
           <div 
-            class="relative bg-gray-800 rounded-b-lg border-4 border-gray-700 border-t-0 h-2 shadow-xl"
+            class="relative bg-gray-800 rounded-b-lg border-4 border-gray-700 border-t-0 h-2 shadow-xl laptop-base"
             transition:fly={{ y: 20, duration: 800, delay: 400 }}
           >
             <!-- Trackpad -->
@@ -121,8 +121,39 @@
     }
   }
   
+  @keyframes laptopFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-8px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-8px) rotate(-1deg);
+    }
+  }
+  
+  @keyframes screenGlow {
+    0%, 100% {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+    }
+    50% {
+      box-shadow: 0 25px 50px -12px rgba(34, 197, 94, 0.3), 0 0 30px rgba(34, 197, 94, 0.2);
+    }
+  }
+  
   .animate-pulse {
     animation: pulse 2s ease-in-out infinite;
   }
+  
+  .laptop-container {
+    animation: laptopFloat 4s ease-in-out infinite;
+  }
+  
+  .laptop-screen {
+    animation: screenGlow 3s ease-in-out infinite;
+  }
 </style>
-

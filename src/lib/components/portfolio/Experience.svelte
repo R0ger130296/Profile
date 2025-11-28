@@ -1,45 +1,144 @@
 <script lang="ts">
   import { experiences } from '$lib/data/portfolio';
-  import { Section, Card, Badge } from '$lib/components/ui';
+  import { Section, Icon } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import type { Experience } from '$lib/data/portfolio';
 
   let visible = false;
+  let selectedExperience: Experience | null = null;
+  let showModal = false;
 
   onMount(() => {
     visible = true;
   });
+
+  function openModal(experience: Experience) {
+    selectedExperience = experience;
+    showModal = true;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    showModal = false;
+    selectedExperience = null;
+    document.body.style.overflow = '';
+  }
+
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && showModal) {
+      closeModal();
+    }
+  }
+
+  // Función para obtener las responsabilidades más importantes (primeras 3-4)
+  function getMainResponsibilities(responsibilities: string[]): string[] {
+    return responsibilities.slice(0, 3);
+  }
 </script>
 
+<svelte:window onkeydown={handleKeydown} />
+
 <Section title="Experiencia Profesional">
-  <div class="space-y-6 sm:space-y-8">
+  <div class="space-y-4 sm:space-y-6">
     {#each experiences as experience, index (experience.id)}
       {#if visible}
         <div
-          class="pb-6 sm:pb-8 border-b border-gray-100 last:border-0"
           transition:fade={{ duration: 300, delay: index * 50 }}
+          class="group cursor-pointer"
+          on:click={() => openModal(experience)}
+          on:keydown={(e) => e.key === 'Enter' && openModal(experience)}
+          role="button"
+          tabindex="0"
         >
-          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
-            <div class="flex-1">
-              <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{experience.title}</h3>
-              <p class="text-sm sm:text-base text-gray-600 mb-1">{experience.company}</p>
-              <p class="text-xs sm:text-sm text-gray-500">{experience.location}</p>
+          <div class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-gray-300 hover:shadow-md transition-all duration-200">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+              <div class="flex-1">
+                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">
+                  {experience.title}
+                </h3>
+                <p class="text-sm sm:text-base text-gray-600 mb-1">{experience.company}</p>
+                <p class="text-xs sm:text-sm text-gray-500">{experience.location}</p>
+              </div>
+              <div class="text-xs sm:text-sm text-gray-500 font-medium whitespace-nowrap">
+                {experience.startDate} - {experience.endDate}
+              </div>
             </div>
-            <div class="text-xs sm:text-sm text-gray-500 font-medium">
-              {experience.startDate} - {experience.endDate}
-            </div>
-          </div>
 
-          <ul class="space-y-1.5 sm:space-y-2">
-            {#each experience.responsibilities as responsibility}
-              <li class="flex items-start gap-2 text-sm text-gray-700 leading-relaxed">
-                <span class="text-gray-400 mt-1.5 flex-shrink-0">•</span>
-                <span>{responsibility}</span>
-              </li>
-            {/each}
-          </ul>
+            <ul class="space-y-1.5 mb-3">
+              {#each getMainResponsibilities(experience.responsibilities) as responsibility}
+                <li class="flex items-start gap-2 text-sm text-gray-700 leading-relaxed">
+                  <span class="text-gray-400 mt-1.5 flex-shrink-0">•</span>
+                  <span>{responsibility}</span>
+                </li>
+              {/each}
+            </ul>
+
+            {#if experience.responsibilities.length > 3}
+              <div class="flex items-center gap-2 text-sm text-primary-600 font-medium group-hover:text-primary-700 transition-colors">
+                <span>Ver más detalles</span>
+                <Icon name="ChevronRight" size={16} color="currentColor" />
+              </div>
+            {/if}
+          </div>
         </div>
       {/if}
     {/each}
   </div>
 </Section>
+
+<!-- Modal para ver detalles completos -->
+{#if showModal && selectedExperience}
+  <div
+    transition:fade={{ duration: 200 }}
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
+    on:click={closeModal}
+    on:keydown={(e) => e.key === 'Escape' && closeModal()}
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    tabindex="-1"
+  >
+    <div
+      class="relative max-w-3xl w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
+      on:click|stopPropagation
+      role="document"
+      transition:fly={{ y: 20, duration: 300 }}
+    >
+      <!-- Header del modal -->
+      <div class="flex items-center justify-between p-5 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-secondary-50">
+        <div class="flex-1 pr-4">
+          <h3 id="modal-title" class="text-lg sm:text-xl font-bold text-gray-900 mb-1">
+            {selectedExperience.title}
+          </h3>
+          <p class="text-sm sm:text-base text-gray-600">{selectedExperience.company}</p>
+          <p class="text-xs sm:text-sm text-gray-500 mt-1">
+            {selectedExperience.location} • {selectedExperience.startDate} - {selectedExperience.endDate}
+          </p>
+        </div>
+        <button
+          on:click={closeModal}
+          class="flex-shrink-0 w-9 h-9 rounded-full bg-white hover:bg-gray-100 flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg"
+          aria-label="Cerrar modal"
+        >
+          <Icon name="X" size={18} color="#374151" />
+        </button>
+      </div>
+
+      <!-- Contenido del modal -->
+      <div class="p-5 sm:p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+        <h4 class="text-base font-semibold text-gray-900 mb-4">Responsabilidades y Logros:</h4>
+        <ul class="space-y-2.5">
+          {#each selectedExperience.responsibilities as responsibility}
+            <li class="flex items-start gap-3 text-sm sm:text-base text-gray-700 leading-relaxed">
+              <span class="text-primary-500 mt-1.5 flex-shrink-0">
+                <Icon name="CheckCircle" size={18} color="currentColor" />
+              </span>
+              <span>{responsibility}</span>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    </div>
+  </div>
+{/if}
