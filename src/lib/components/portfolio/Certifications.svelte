@@ -34,7 +34,7 @@
 <svelte:window onkeydown={handleKeydown} />
 
 <Section title="Certificaciones">
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
     {#each certifications as cert, index (cert.id)}
       {#if visible}
         <div
@@ -46,10 +46,10 @@
           on:keydown={(e) => e.key === 'Enter' && openModal(cert)}
         >
           <div
-            class="relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+            class="relative bg-white rounded-lg sm:rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 border border-gray-100"
           >
             <!-- Imagen del certificado -->
-            <div class="relative aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+            <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">
               {#if cert.image}
                 {#if cert.image.endsWith('.pdf')}
                   <!-- Para PDFs, mostrar un preview con icono -->
@@ -92,22 +92,22 @@
             </div>
 
             <!-- Información del certificado -->
-            <div class="p-4">
+            <div class="p-2 sm:p-3 md:p-4">
               <h3
-                class="text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors duration-200"
+                class="text-xs sm:text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-primary-600 transition-colors duration-200 leading-tight"
               >
                 {cert.name}
               </h3>
               {#if cert.issuer}
-                <p class="text-xs text-gray-500 mt-1">{cert.issuer}</p>
+                <p class="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1">{cert.issuer}</p>
               {/if}
             </div>
 
             <!-- Badge de certificado -->
             <div
-              class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md group-hover:scale-110 transition-transform duration-300"
+              class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white/90 backdrop-blur-sm rounded-full p-1.5 sm:p-2 shadow-md group-hover:scale-110 transition-transform duration-300"
             >
-              <Icon name="Award" size={16} color="#6366F1" />
+              <Icon name="Award" size={12} color="#6366F1" />
             </div>
           </div>
         </div>
@@ -149,31 +149,31 @@
       </div>
 
       <!-- Contenido del modal -->
-      <div class="p-4 md:p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+      <div class="p-2 sm:p-4 md:p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
         {#if selectedCert.image}
           {#if selectedCert.image.endsWith('.pdf')}
             <!-- Para PDFs, mostrar un iframe o enlace de descarga -->
-            <div class="flex flex-col items-center justify-center min-h-[400px] bg-gray-50 rounded-lg p-8">
-              <div class="text-center mb-6">
+            <div class="flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] bg-gray-50 rounded-lg p-4 sm:p-6 md:p-8">
+              <div class="text-center mb-4 sm:mb-6">
                 <div
-                  class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-2xl flex items-center justify-center shadow-xl"
+                  class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl"
                 >
-                  <Icon name="Award" size={48} color="white" />
+                  <Icon name="Award" size={32} color="white" />
                 </div>
-                <p class="text-gray-600 mb-4">Certificado en formato PDF</p>
+                <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">Certificado en formato PDF</p>
                 <a
                   href={selectedCert.image}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                  class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
-                  <Icon name="Download" size={20} color="white" />
+                  <Icon name="Download" size={18} color="white" />
                   Abrir PDF
                 </a>
               </div>
               <iframe
                 src={selectedCert.image}
-                class="w-full h-[600px] border-0 rounded-lg shadow-lg"
+                class="w-full h-[400px] sm:h-[500px] md:h-[600px] border-0 rounded-lg shadow-lg"
                 title={selectedCert.name}
               ></iframe>
             </div>

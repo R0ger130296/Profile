@@ -33,7 +33,12 @@
         transition:fly={{ y: 30, duration: 800 }}
       >
         <div transition:scale={{ duration: 600, delay: 200 }}>
-          <Avatar name={personalInfo.name} size="xl" className="ring-4 ring-white/30 shadow-2xl" />
+          <Avatar
+            name={personalInfo.name}
+            image="/profile.jpg"
+            size="xl"
+            className="ring-4 ring-white/30 shadow-2xl"
+          />
         </div>
         <div class="flex-1">
           <h1
