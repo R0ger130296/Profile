@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
   import { Icon } from './index';
 
   export let isOpen = false;
@@ -21,29 +22,52 @@
     }
   }
 
-  $: if (isOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
+  function handleBackdropClick() {
+    handleClose();
   }
+
+  function handleBackdropKeydown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClose();
+    }
+  }
+
+  function handleContentClick(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
+  $: if (browser && isOpen) {
+    document.body.style.overflow = 'hidden';
+  }
+
+  onDestroy(() => {
+    if (browser) {
+      document.body.style.overflow = '';
+    }
+  });
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
 
 {#if isOpen}
+  <!-- Backdrop clickeable -->
   <div
     transition:fade={{ duration: 200 }}
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
-    on:click={handleClose}
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-    tabindex="-1"
+    on:click={handleBackdropClick}
+    on:keydown={handleBackdropKeydown}
+    role="button"
+    tabindex="0"
+    aria-label="Cerrar modal"
   >
+    <!-- Contenido del modal -->
     <div
       class="relative {maxWidth} w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
-      on:click|stopPropagation
-      role="document"
+      on:click={handleContentClick}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
       transition:fly={{ y: 20, duration: 300 }}
     >
       <!-- Header del modal -->
@@ -72,4 +96,3 @@
     </div>
   </div>
 {/if}
-

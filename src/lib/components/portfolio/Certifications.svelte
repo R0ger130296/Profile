@@ -61,6 +61,8 @@
                       data="{cert.image}#page=1&toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit"
                       type="application/pdf"
                       class="w-full h-full pointer-events-none"
+                      aria-label="Vista previa del certificado {cert.name}"
+                      title="Vista previa del certificado {cert.name}"
                     >
                       <!-- Fallback si el PDF no se puede mostrar -->
                       <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
@@ -128,16 +130,22 @@
     transition:fade={{ duration: 200 }}
     class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
     on:click={closeModal}
-    on:keydown={(e) => e.key === 'Escape' && closeModal()}
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
-    tabindex="-1"
+    on:keydown={(e) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeModal();
+      }
+    }}
+    role="button"
+    tabindex="0"
+    aria-label="Cerrar modal"
   >
     <div
       class="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden"
       on:click|stopPropagation
-      role="document"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
       transition:fly={{ y: 20, duration: 300 }}
     >
       <!-- Header del modal -->
