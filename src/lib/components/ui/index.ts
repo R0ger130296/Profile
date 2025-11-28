@@ -6,4 +6,5 @@ export { default as Section } from './Section.svelte';
 export { default as ContactLink } from './ContactLink.svelte';
 export { default as Badge } from './Badge.svelte';
 export { default as Avatar } from './Avatar.svelte';
-
+export { default as AnimatedSection } from './AnimatedSection.svelte';
+export { default as ImagePlaceholder } from './ImagePlaceholder.svelte';

@@ -6,7 +6,7 @@
   export let direction: 'up' | 'left' | 'right' | 'fade' = 'up';
   export let duration: number = 600;
 
-  let visible = $state(false);
+  let visible = false;
 
   onMount(() => {
     const timer = setTimeout(() => {
@@ -28,11 +28,13 @@
 </script>
 
 {#if visible}
-  <div
-    transition:fly={direction !== 'fade' ? flyConfig : undefined}
-    transition:fade={direction === 'fade' ? transitionConfig : undefined}
-  >
-    <slot />
-  </div>
+  {#if direction === 'fade'}
+    <div transition:fade={transitionConfig}>
+      <slot />
+    </div>
+  {:else}
+    <div transition:fly={flyConfig}>
+      <slot />
+    </div>
+  {/if}
 {/if}
-

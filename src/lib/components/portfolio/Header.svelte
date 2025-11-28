@@ -1,10 +1,10 @@
 <script lang="ts">
   import { personalInfo } from '$lib/data/portfolio';
   import { Avatar, ContactLink } from '$lib/components/ui';
-  import { fly, fade } from 'svelte/transition';
+  import { fly, fade, scale } from 'svelte/transition';
   import { onMount } from 'svelte';
 
-  let mounted = $state(false);
+  let mounted = false;
 
   onMount(() => {
     mounted = true;

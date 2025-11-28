@@ -1,10 +1,10 @@
 <script lang="ts">
   import { skills, softSkills } from '$lib/data/portfolio';
   import { Section, Badge } from '$lib/components/ui';
-  import { fly, scale } from 'svelte/transition';
+  import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
-  let visible = $state(false);
+  let visible = false;
 
   onMount(() => {
     visible = true;
@@ -33,13 +33,17 @@
           </h3>
           <div class="flex flex-wrap gap-2">
             {#each skillList as skill, skillIndex}
-              <Badge
-                variant={categoryIndex % 2 === 0 ? 'primary' : 'secondary'}
-                className="transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-default"
-                transition:scale={{ duration: 300, delay: (categoryIndex * 100) + (skillIndex * 30) }}
+              <span
+                class="inline-block"
+                transition:fade={{ duration: 300, delay: (categoryIndex * 100) + (skillIndex * 30) }}
               >
-                {skill}
-              </Badge>
+                <Badge
+                  variant={categoryIndex % 2 === 0 ? 'primary' : 'secondary'}
+                  className="transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-default"
+                >
+                  {skill}
+                </Badge>
+              </span>
             {/each}
           </div>
         </div>
