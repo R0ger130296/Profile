@@ -5,7 +5,7 @@
   export let padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
   export let elevation: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
-  const baseStyles = 'bg-white rounded-lg';
+  const baseStyles = 'bg-white rounded-xl';
 
   const paddings = {
     none: '',
@@ -16,9 +16,9 @@
 
   const elevations = {
     none: '',
-    sm: 'shadow-sm',
-    md: 'shadow-md',
-    lg: 'shadow-lg'
+    sm: 'shadow-soft',
+    md: 'shadow-medium',
+    lg: 'shadow-large'
   };
 
   $: cardClass = cn(baseStyles, paddings[padding], elevations[elevation], className);

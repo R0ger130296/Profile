@@ -23,13 +23,13 @@
       >
         <div class="flex-1">
           <h1
-            class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-1 sm:mb-2 text-gray-900"
+            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-gray-900 tracking-tight"
             transition:fade={{ duration: 400, delay: 200 }}
           >
             {personalInfo.name}
           </h1>
           <p
-            class="text-sm sm:text-base md:text-lg text-gray-600 font-normal"
+            class="text-base sm:text-lg md:text-xl text-gray-600 font-medium"
             transition:fade={{ duration: 400, delay: 300 }}
           >
             {personalInfo.title}
@@ -44,17 +44,17 @@
         <ContactLink
           type="email"
           value={personalInfo.email}
-          className="text-gray-700 hover:text-gray-900 text-sm px-3 py-1.5 rounded-md hover:bg-gray-50 transition-colors"
+          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
         />
         <ContactLink
           type="phone"
           value={personalInfo.phone}
-          className="text-gray-700 hover:text-gray-900 text-sm px-3 py-1.5 rounded-md hover:bg-gray-50 transition-colors"
+          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
         />
         <ContactLink
           type="location"
           value={personalInfo.location}
-          className="text-gray-700 hover:text-gray-900 text-sm px-3 py-1.5 rounded-md hover:bg-gray-50 transition-colors"
+          className="text-gray-700 hover:text-primary-600 text-sm px-4 py-2 rounded-lg hover:bg-primary-50 transition-all duration-200 hover:shadow-soft"
         />
       </div>
     {/if}

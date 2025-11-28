@@ -11,10 +11,10 @@
   });
 
   function getLevelColor(level: number): string {
-    if (level >= 80) return 'bg-green-500';
-    if (level >= 60) return 'bg-blue-500';
-    if (level >= 40) return 'bg-yellow-500';
-    return 'bg-gray-400';
+    if (level >= 80) return 'bg-gradient-to-r from-green-500 to-green-600';
+    if (level >= 60) return 'bg-gradient-to-r from-blue-500 to-blue-600';
+    if (level >= 40) return 'bg-gradient-to-r from-yellow-500 to-yellow-600';
+    return 'bg-gradient-to-r from-gray-400 to-gray-500';
   }
 
   function getLevelLabel(level: number): string {
@@ -29,8 +29,8 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
     {#each Object.entries(skills) as [category, skillList], categoryIndex}
       {#if visible}
-        <div class="flex flex-col" transition:fade={{ duration: 300, delay: categoryIndex * 50 }}>
-          <h3 class="text-sm sm:text-base font-semibold text-gray-900 mb-4">
+        <div class="flex flex-col bg-gray-50 rounded-xl p-5 hover:bg-white transition-colors duration-300" transition:fade={{ duration: 300, delay: categoryIndex * 50 }}>
+          <h3 class="text-base sm:text-lg font-bold text-gray-900 mb-5 pb-2 border-b border-gray-200">
             {category === 'frontend'
               ? 'Frontend'
               : category === 'backend'
@@ -41,22 +41,25 @@
                     ? 'Herramientas'
                     : 'Metodologías'}
           </h3>
-          <div class="space-y-3">
+          <div class="space-y-4">
             {#each skillList as skill, skillIndex}
               <div
                 transition:fly={{ x: -20, duration: 400, delay: categoryIndex * 50 + skillIndex * 30 }}
+                class="group"
               >
-                <div class="flex items-center justify-between mb-1">
-                  <span class="text-xs sm:text-sm font-medium text-gray-700">{skill.name}</span>
-                  <span class="text-xs text-gray-500">{skill.level}%</span>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm sm:text-base font-semibold text-gray-800">{skill.name}</span>
+                  <span class="text-xs font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">{skill.level}%</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden group">
+                <div class="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden shadow-inner">
                   <div
-                    class="h-full rounded-full transition-all duration-1000 ease-out {getLevelColor(skill.level)} group-hover:shadow-lg"
+                    class="h-full rounded-full transition-all duration-1000 ease-out {getLevelColor(skill.level)} group-hover:shadow-lg relative overflow-hidden"
                     style="width: {skill.level}%"
-                  ></div>
+                  >
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+                  </div>
                 </div>
-                <p class="text-xs text-gray-500 mt-0.5">{getLevelLabel(skill.level)}</p>
+                <p class="text-xs font-medium text-gray-500 mt-1.5">{getLevelLabel(skill.level)}</p>
               </div>
             {/each}
           </div>
@@ -68,10 +71,10 @@
   {#if visible}
     <div class="pt-6 sm:pt-8 border-t border-gray-100" transition:fade={{ duration: 300, delay: 400 }}>
       <h3 class="text-sm sm:text-base font-semibold text-gray-900 mb-4">Habilidades Blandas</h3>
-      <div class="flex flex-wrap gap-1.5 sm:gap-2">
+      <div class="flex flex-wrap gap-2 sm:gap-3">
         {#each softSkills as skill}
-          <span class="text-xs sm:text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded-md">
-            {skill}
+          <span class="text-xs sm:text-sm px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 text-gray-700 font-medium rounded-full border border-primary-100 hover:border-primary-300 hover:shadow-soft transition-all duration-200 cursor-default">
+            {typeof skill === 'string' ? skill : skill.name}
           </span>
         {/each}
       </div>

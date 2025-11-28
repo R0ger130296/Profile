@@ -8,6 +8,7 @@
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
   import Languages from '$lib/components/portfolio/Languages.svelte';
   import References from '$lib/components/portfolio/References.svelte';
+  import { ScrollToTop } from '$lib/components/ui';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
 
@@ -15,11 +16,6 @@
 
   onMount(() => {
     if (!browser) return;
-
-    // Hacer visibles todas las secciones inmediatamente como fallback
-    document.querySelectorAll('.section-content').forEach((el) => {
-      el.classList.add('animate-in');
-    });
 
     // Agregar interacciones de scroll con IntersectionObserver
     if (typeof IntersectionObserver !== 'undefined') {
@@ -40,10 +36,17 @@
       setTimeout(() => {
         if (observer && browser) {
           document.querySelectorAll('section, .section-content').forEach((el) => {
+            // Remover clase inicial si existe para permitir animación
+            el.classList.remove('initially-visible');
             observer!.observe(el);
           });
         }
       }, 100);
+    } else {
+      // Fallback: si no hay IntersectionObserver, mostrar todas las secciones
+      document.querySelectorAll('.section-content').forEach((el) => {
+        el.classList.add('animate-in');
+      });
     }
   });
 
@@ -62,7 +65,7 @@
 
 <div class="min-h-screen bg-white">
   <!-- Header fijo sobre el Hero -->
-  <div class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+  <div class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-soft">
     <Header />
   </div>
 
@@ -70,50 +73,61 @@
   <Hero />
 
   <!-- Contenido principal -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 space-y-8 sm:space-y-12 -mt-20 sm:-mt-24 relative z-10">
-    <div class="section-content">
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 space-y-12 sm:space-y-16 -mt-20 sm:-mt-24 relative z-10">
+    <div class="section-content initially-visible">
       <About />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <Experience />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <Education />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <Skills />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <Certifications />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <Languages />
     </div>
-    <div class="section-content">
+    <div class="section-content initially-visible">
       <References />
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-100 py-6 sm:py-8 mt-12 sm:mt-16">
+  <footer class="border-t border-gray-200 bg-gray-50 py-8 sm:py-12 mt-16 sm:mt-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-gray-500 text-xs sm:text-sm">
-        © {new Date().getFullYear()} Roger Cedeño. Desarrollado con Svelte y Tailwind CSS
+      <p class="text-gray-600 text-sm sm:text-base">
+        © {new Date().getFullYear()} Roger Cedeño. Desarrollado con <span class="font-semibold text-primary-600">Svelte</span> y <span class="font-semibold text-secondary-600">Tailwind CSS</span>
       </p>
     </div>
   </footer>
+
+  <!-- Botón Scroll to Top -->
+  <ScrollToTop />
 </div>
 
 <style>
   .section-content {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
-  .section-content.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+  /* Solo aplicar animación si el navegador soporta IntersectionObserver */
+  @media (prefers-reduced-motion: no-preference) {
+    .section-content:not(.animate-in):not(.initially-visible) {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .section-content.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Interacciones hover mejoradas */

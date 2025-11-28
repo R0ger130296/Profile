@@ -10,3 +10,4 @@ export { default as AnimatedSection } from './AnimatedSection.svelte';
 export { default as ImagePlaceholder } from './ImagePlaceholder.svelte';
 export { default as Modal } from './Modal.svelte';
 export { default as Pagination } from './Pagination.svelte';
+export { default as ScrollToTop } from './ScrollToTop.svelte';

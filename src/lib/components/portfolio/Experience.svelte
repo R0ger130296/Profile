@@ -70,13 +70,13 @@
           role="button"
           tabindex="0"
         >
-          <div class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-gray-300 hover:shadow-lg hover-lift transition-all duration-300">
+          <div class="bg-white border border-gray-200 rounded-xl p-5 sm:p-7 hover:border-primary-200 hover:shadow-large hover-lift transition-all duration-300 group">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
               <div class="flex-1">
-                <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">
+                <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
                   {experience.title}
                 </h3>
-                <p class="text-sm sm:text-base text-gray-600 mb-1">{experience.company}</p>
+                <p class="text-sm sm:text-base font-medium text-gray-700 mb-1">{experience.company}</p>
                 <p class="text-xs sm:text-sm text-gray-500">{experience.location}</p>
               </div>
               <div class="text-xs sm:text-sm text-gray-500 font-medium whitespace-nowrap">
