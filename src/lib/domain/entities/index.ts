@@ -8,3 +8,4 @@ export { PersonalInfo } from './PersonalInfo.entity';
 export { Reference } from './Reference.entity';
 export { Skill, type SkillCategory, type SkillLevel } from './Skill.entity';
 export { Language } from './Language.entity';
+export { Project } from './Project.entity';

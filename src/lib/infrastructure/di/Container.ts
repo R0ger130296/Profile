@@ -10,7 +10,8 @@ import {
   GetEducationUseCase,
   GetSkillsUseCase,
   GetLanguagesUseCase,
-  GetReferencesUseCase
+  GetReferencesUseCase,
+  GetProjectsUseCase
 } from '../../application/use-cases';
 
 /**
@@ -28,6 +29,7 @@ class Container {
   private getSkillsUseCase: GetSkillsUseCase;
   private getLanguagesUseCase: GetLanguagesUseCase;
   private getReferencesUseCase: GetReferencesUseCase;
+  private getProjectsUseCase: GetProjectsUseCase;
 
   private constructor() {
     // Inicializar repositorio
@@ -41,6 +43,7 @@ class Container {
     this.getSkillsUseCase = new GetSkillsUseCase(this.repository);
     this.getLanguagesUseCase = new GetLanguagesUseCase(this.repository);
     this.getReferencesUseCase = new GetReferencesUseCase(this.repository);
+    this.getProjectsUseCase = new GetProjectsUseCase(this.repository);
   }
 
   public static getInstance(): Container {
@@ -77,6 +80,10 @@ class Container {
 
   public getGetReferencesUseCase(): GetReferencesUseCase {
     return this.getReferencesUseCase;
+  }
+
+  public getGetProjectsUseCase(): GetProjectsUseCase {
+    return this.getProjectsUseCase;
   }
 }
 

@@ -32,6 +32,8 @@ export interface Reference {
   company: string;
   email: string;
   phone: string;
+  testimonial?: string;
+  linkedinUrl?: string;
 }
 
 export interface PersonalInfo {
@@ -284,7 +286,9 @@ export const references: Reference[] = [
     position: 'Ingeniero en Software',
     company: 'Neoris',
     email: 'erickerraez2@gmail.com',
-    phone: '097178106'
+    phone: '097178106',
+    testimonial: 'Roger es un desarrollador excepcional con gran capacidad para resolver problemas complejos. Su dedicación y conocimiento técnico lo hacen un excelente compañero de equipo.',
+    linkedinUrl: 'https://linkedin.com/in/erick-erraez'
   },
   {
     id: 2,
@@ -292,7 +296,9 @@ export const references: Reference[] = [
     position: 'Ingeniero en Software',
     company: 'Procuraduría General del Estado',
     email: 'perlazajohao@gmail.com',
-    phone: '0978970998'
+    phone: '0978970998',
+    testimonial: 'Trabajar con Roger ha sido una experiencia enriquecedora. Su enfoque en la calidad del código y su capacidad de aprendizaje continuo son destacables.',
+    linkedinUrl: 'https://linkedin.com/in/johao-perlaza'
   },
 ];
 

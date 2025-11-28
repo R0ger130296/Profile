@@ -9,7 +9,9 @@ export class Reference {
     public readonly position: string,
     public readonly company: string,
     public readonly email: string,
-    public readonly phone: string
+    public readonly phone: string,
+    public readonly testimonial?: string,
+    public readonly linkedinUrl?: string
   ) {
     this.validate();
   }

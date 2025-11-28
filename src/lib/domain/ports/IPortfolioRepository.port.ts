@@ -10,7 +10,8 @@ import type {
   PersonalInfo,
   Reference,
   Skill,
-  Language
+  Language,
+  Project
 } from '../entities';
 
 export interface IPortfolioRepository {
@@ -22,4 +23,5 @@ export interface IPortfolioRepository {
   getSkills(): Promise<Skill[]>;
   getSoftSkills(): Promise<Skill[]>;
   getLanguages(): Promise<Language[]>;
+  getProjects(): Promise<Project[]>;
 }

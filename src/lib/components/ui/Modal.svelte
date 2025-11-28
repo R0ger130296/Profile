@@ -3,73 +3,68 @@
   import { createEventDispatcher, onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
   import { Icon } from './index';
+  import { useBodyScrollLock } from '$lib/composables';
 
+  // Props - Para Svelte 5, usar props tradicionales con bind:isOpen en el padre
   export let isOpen = false;
   export let title = '';
   export let subtitle: string | undefined = undefined;
   export let maxWidth = 'max-w-3xl';
+  export let closeOnBackdropClick = true;
+  export let closeOnEscape = true;
 
   const dispatch = createEventDispatcher();
   let modalElement: HTMLDivElement;
-  let originalOverflow = '';
-  let originalPaddingRight = '';
+  const { lock, unlock } = useBodyScrollLock();
 
-  function handleClose() {
+  function handleClose(): void {
     if (isOpen) {
-      isOpen = false;
+      unlock();
       dispatch('close');
+      // Actualizar el prop para que el binding funcione
+      isOpen = false;
     }
   }
 
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape' && isOpen) {
+  function handleKeydown(event: KeyboardEvent): void {
+    if (closeOnEscape && event.key === 'Escape' && isOpen) {
       event.preventDefault();
       event.stopPropagation();
       handleClose();
     }
   }
 
-  function handleBackdropClick(event: MouseEvent) {
-    // Solo cerrar si se hace click directamente en el backdrop
-    if (event.target === event.currentTarget) {
+  function handleBackdropClick(event: MouseEvent): void {
+    if (closeOnBackdropClick && event.target === event.currentTarget) {
       handleClose();
     }
   }
 
-  function handleBackdropKeydown(event: KeyboardEvent) {
+  function handleBackdropKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       handleClose();
     }
   }
 
-  function handleContentClick(event: MouseEvent) {
+  function handleContentClick(event: MouseEvent): void {
     event.stopPropagation();
   }
 
-  // Manejo del scroll del body
+  // Manejar scroll lock cuando se abre/cierra
   $: if (browser) {
     if (isOpen) {
-      // Guardar valores originales
-      originalOverflow = document.body.style.overflow || '';
-      originalPaddingRight = document.body.style.paddingRight || '';
-      
-      // Calcular el ancho del scrollbar
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      
-      // Bloquear scroll y compensar el scrollbar
-      document.body.style.overflow = 'hidden';
-      if (scrollbarWidth > 0) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-      }
+      lock();
+      // Focus en el modal después de la animación
+      setTimeout(() => {
+        modalElement?.focus();
+      }, 100);
     } else {
-      // Restaurar valores originales
-      document.body.style.overflow = originalOverflow;
-      document.body.style.paddingRight = originalPaddingRight;
+      unlock();
     }
   }
 
-  // Focus trap y focus inicial
+  // Event listener para Escape
   onMount(() => {
     if (browser) {
       window.addEventListener('keydown', handleKeydown);
@@ -79,19 +74,10 @@
   onDestroy(() => {
     if (browser) {
       window.removeEventListener('keydown', handleKeydown);
-      // Asegurar que se restaure el scroll al desmontar
-      document.body.style.overflow = originalOverflow;
-      document.body.style.paddingRight = originalPaddingRight;
+      // Asegurar unlock al desmontar
+      unlock();
     }
   });
-
-  // Focus en el modal cuando se abre
-  $: if (browser && isOpen && modalElement) {
-    // Pequeño delay para que la animación no interfiera
-    setTimeout(() => {
-      modalElement?.focus();
-    }, 100);
-  }
 </script>
 
 {#if isOpen}
@@ -144,4 +130,3 @@
     </div>
   </div>
 {/if}
-

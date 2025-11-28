@@ -7,4 +7,5 @@ export { default as Skills } from './Skills.svelte';
 export { default as Certifications } from './Certifications.svelte';
 export { default as Languages } from './Languages.svelte';
 export { default as References } from './References.svelte';
+export { default as Projects } from './Projects.svelte';
 

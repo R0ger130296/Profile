@@ -11,6 +11,7 @@ import {
   Reference,
   Skill,
   Language,
+  Project,
   type SkillCategory
 } from '../../domain/entities';
 import {
@@ -23,6 +24,7 @@ import {
   softSkills as softSkillsData,
   languages as languagesData
 } from '../../data/portfolio';
+import { projectsData } from '../../data/projects';
 
 export class PortfolioRepository implements IPortfolioRepository {
   async getPersonalInfo(): Promise<PersonalInfo> {
@@ -82,7 +84,9 @@ export class PortfolioRepository implements IPortfolioRepository {
           ref.position,
           ref.company,
           ref.email,
-          ref.phone
+          ref.phone,
+          ref.testimonial,
+          ref.linkedinUrl
         )
     );
   }
@@ -117,6 +121,25 @@ export class PortfolioRepository implements IPortfolioRepository {
   async getLanguages(): Promise<Language[]> {
     return languagesData.map(
       (lang) => new Language(lang.name, lang.level)
+    );
+  }
+
+  async getProjects(): Promise<Project[]> {
+    return projectsData.map(
+      (project) =>
+        new Project(
+          project.id,
+          project.name,
+          project.description,
+          project.longDescription,
+          project.technologies,
+          project.image,
+          project.githubUrl,
+          project.liveUrl,
+          project.featured,
+          project.startDate,
+          project.endDate
+        )
     );
   }
 }

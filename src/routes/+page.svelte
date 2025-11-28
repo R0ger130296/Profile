@@ -8,6 +8,7 @@
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
   import Languages from '$lib/components/portfolio/Languages.svelte';
   import References from '$lib/components/portfolio/References.svelte';
+  import Projects from '$lib/components/portfolio/Projects.svelte';
   import { ScrollToTop } from '$lib/components/ui';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
@@ -58,9 +59,25 @@
 </script>
 
 <svelte:head>
-  <title>Roger Cedeño - Portafolio Profesional</title>
-  <meta name="description" content="Portafolio profesional de Roger Cedeño - Software Engineer | Full Stack Developer" />
+  <title>Roger Cedeño - Software Engineer | Full Stack Developer</title>
+  <meta name="description" content="Portafolio profesional de Roger Cedeño - Desarrollador Full Stack con experiencia en React, Next.js, NestJS, Spring Boot y más. Especializado en desarrollo de aplicaciones web y móviles escalables." />
+  <meta name="keywords" content="Roger Cedeño, Full Stack Developer, Software Engineer, React, Next.js, NestJS, Spring Boot, TypeScript, Portfolio" />
+  <meta name="author" content="Roger Cedeño" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Roger Cedeño - Software Engineer | Full Stack Developer" />
+  <meta property="og:description" content="Portafolio profesional de Roger Cedeño - Desarrollador Full Stack especializado en tecnologías modernas" />
+  <meta property="og:image" content="/me/roger.jpg" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Roger Cedeño - Software Engineer | Full Stack Developer" />
+  <meta name="twitter:description" content="Portafolio profesional de Roger Cedeño - Desarrollador Full Stack" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://rogercedeno.dev" />
 </svelte:head>
 
 <div class="min-h-screen bg-white">
@@ -85,6 +102,9 @@
     </div>
     <div class="section-content initially-visible">
       <Skills />
+    </div>
+    <div class="section-content initially-visible">
+      <Projects />
     </div>
     <div class="section-content initially-visible">
       <Certifications />

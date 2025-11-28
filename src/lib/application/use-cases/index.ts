@@ -8,3 +8,4 @@ export { GetEducationUseCase } from './GetEducationUseCase';
 export { GetSkillsUseCase } from './GetSkillsUseCase';
 export { GetLanguagesUseCase } from './GetLanguagesUseCase';
 export { GetReferencesUseCase } from './GetReferencesUseCase';
+export { GetProjectsUseCase } from './GetProjectsUseCase';

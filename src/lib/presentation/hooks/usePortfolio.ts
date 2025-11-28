@@ -10,7 +10,8 @@ import type {
   Certification,
   Reference,
   Skill,
-  Language
+  Language,
+  Project
 } from '../../domain/entities';
 
 /**
@@ -75,4 +76,20 @@ export async function useLanguages(): Promise<Language[]> {
 export async function useReferences(): Promise<Reference[]> {
   const useCase = container.getGetReferencesUseCase();
   return await useCase.execute();
+}
+
+/**
+ * Hook para obtener proyectos
+ */
+export async function useProjects(): Promise<Project[]> {
+  const useCase = container.getGetProjectsUseCase();
+  return await useCase.execute();
+}
+
+/**
+ * Hook para obtener proyectos destacados
+ */
+export async function useFeaturedProjects(): Promise<Project[]> {
+  const useCase = container.getGetProjectsUseCase();
+  return await useCase.executeFeatured();
 }
