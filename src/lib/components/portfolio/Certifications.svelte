@@ -186,6 +186,7 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
+      tabindex="-1"
       transition:fly={{ y: 20, duration: 300 }}
     >
       <!-- Header del modal -->

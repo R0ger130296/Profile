@@ -8,29 +8,49 @@
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
   import Languages from '$lib/components/portfolio/Languages.svelte';
   import References from '$lib/components/portfolio/References.svelte';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
+
+  let observer: IntersectionObserver | null = null;
 
   onMount(() => {
-    // Agregar interacciones de scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    if (!browser) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-
-    // Observar todas las secciones
-    document.querySelectorAll('section, .section-content').forEach((el) => {
-      observer.observe(el);
+    // Hacer visibles todas las secciones inmediatamente como fallback
+    document.querySelectorAll('.section-content').forEach((el) => {
+      el.classList.add('animate-in');
     });
 
-    return () => observer.disconnect();
+    // Agregar interacciones de scroll con IntersectionObserver
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observar todas las secciones después de un pequeño delay para asegurar que existan
+      setTimeout(() => {
+        if (observer && browser) {
+          document.querySelectorAll('section, .section-content').forEach((el) => {
+            observer!.observe(el);
+          });
+        }
+      }, 100);
+    }
+  });
+
+  onDestroy(() => {
+    if (observer) {
+      observer.disconnect();
+    }
   });
 </script>
 
