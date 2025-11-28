@@ -1,18 +1,21 @@
 <script lang="ts">
-  import { personalInfo } from '$lib/data/portfolio';
+  import { usePersonalInfo } from '$lib/presentation/hooks/usePortfolio';
   import { Section, Icon } from '$lib/components/ui';
   import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import type { PersonalInfo } from '$lib/domain/entities';
 
   let visible = false;
+  let personalInfo: PersonalInfo | null = null;
 
-  onMount(() => {
+  onMount(async () => {
     visible = true;
+    personalInfo = await usePersonalInfo();
   });
 </script>
 
 <Section title="Sobre Mí">
-  {#if visible}
+  {#if visible && personalInfo}
     <div transition:fade={{ duration: 600 }}>
       <div class="prose prose-lg max-w-none">
         <p class="text-base sm:text-lg leading-relaxed text-gray-700 mb-6 sm:mb-8">{personalInfo.summary}</p>

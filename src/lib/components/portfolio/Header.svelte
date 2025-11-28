@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { personalInfo } from '$lib/data/portfolio';
+  import { usePersonalInfo } from '$lib/presentation/hooks/usePortfolio';
   import { Avatar, ContactLink } from '$lib/components/ui';
   import { fly, fade, scale } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import type { PersonalInfo } from '$lib/domain/entities';
 
   let mounted = false;
+  let personalInfo: PersonalInfo | null = null;
 
-  onMount(() => {
+  onMount(async () => {
     mounted = true;
+    personalInfo = await usePersonalInfo();
   });
 </script>
 
@@ -27,7 +30,7 @@
   </div>
 
   <div class="relative max-w-6xl mx-auto z-10">
-    {#if mounted}
+    {#if mounted && personalInfo}
       <div
         class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 mb-8 sm:mb-10 text-center sm:text-left"
         transition:fly={{ y: 30, duration: 800 }}
@@ -37,7 +40,7 @@
             name={personalInfo.name}
             image="/profile.jpg"
             size="xl"
-            className="ring-4 ring-white/30 shadow-2xl"
+            className="ring-4 ring-white/30 shadow-2xl hover:ring-white/50 transition-all duration-300"
           />
         </div>
         <div class="flex-1">

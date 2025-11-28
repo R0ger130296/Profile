@@ -1,15 +1,18 @@
 <script lang="ts">
-  import { certifications } from '$lib/data/portfolio';
+  import { useCertifications } from '$lib/presentation/hooks/usePortfolio';
   import { Section, Icon } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
   import { onMount } from 'svelte';
+  import type { Certification } from '$lib/domain/entities';
 
   let visible = false;
-  let selectedCert: typeof certifications[0] | null = null;
+  let certifications: Certification[] = [];
+  let selectedCert: Certification | null = null;
   let showModal = false;
 
-  onMount(() => {
+  onMount(async () => {
     visible = true;
+    certifications = await useCertifications();
   });
 
   function openModal(cert: typeof certifications[0]) {
@@ -52,15 +55,30 @@
             <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">
               {#if cert.image}
                 {#if cert.image.endsWith('.pdf')}
-                  <!-- Para PDFs, mostrar un preview con icono -->
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
-                    <div class="text-center p-4">
-                      <div
-                        class="w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
-                      >
-                        <Icon name="Award" size={32} color="white" />
+                  <!-- Para PDFs, mostrar preview usando object -->
+                  <div class="w-full h-full relative bg-white">
+                    <object
+                      data="{cert.image}#page=1&toolbar=0&navpanes=0&scrollbar=0&zoom=page-fit"
+                      type="application/pdf"
+                      class="w-full h-full pointer-events-none"
+                    >
+                      <!-- Fallback si el PDF no se puede mostrar -->
+                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+                        <div class="text-center p-4">
+                          <div
+                            class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg"
+                          >
+                            <Icon name="Award" size={24} color="white" />
+                          </div>
+                          <p class="text-[10px] sm:text-xs text-gray-600 font-medium">PDF</p>
+                        </div>
                       </div>
-                      <p class="text-xs text-gray-600 font-medium">PDF</p>
+                    </object>
+                    <!-- Overlay con gradiente para mejor visualización -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+                    <!-- Badge PDF -->
+                    <div class="absolute top-2 left-2 bg-primary-500/90 text-white text-[10px] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md font-semibold backdrop-blur-sm shadow-md">
+                      PDF
                     </div>
                   </div>
                 {:else}
