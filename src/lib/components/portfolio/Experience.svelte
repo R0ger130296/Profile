@@ -51,7 +51,7 @@
           role="button"
           tabindex="0"
         >
-          <div class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-gray-300 hover:shadow-md transition-all duration-200">
+          <div class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:border-gray-300 hover:shadow-lg hover-lift transition-all duration-300">
             <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
               <div class="flex-1">
                 <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">

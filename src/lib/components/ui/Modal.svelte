@@ -10,6 +10,7 @@
   export let maxWidth = 'max-w-3xl';
 
   const dispatch = createEventDispatcher();
+  let originalOverflow = '';
 
   function handleClose() {
     isOpen = false;
@@ -37,13 +38,18 @@
     event.stopPropagation();
   }
 
-  $: if (browser && isOpen) {
-    document.body.style.overflow = 'hidden';
+  $: if (browser) {
+    if (isOpen) {
+      originalOverflow = document.body.style.overflow || '';
+      document.body.style.overflow = 'hidden';
+    } else if (originalOverflow !== undefined) {
+      document.body.style.overflow = originalOverflow;
+    }
   }
 
   onDestroy(() => {
-    if (browser) {
-      document.body.style.overflow = '';
+    if (browser && originalOverflow !== undefined) {
+      document.body.style.overflow = originalOverflow;
     }
   });
 </script>

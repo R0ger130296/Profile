@@ -14,7 +14,7 @@
   });
 </script>
 
-<header class="relative bg-white border-b border-gray-100 py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+<header class="relative bg-transparent py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
     {#if mounted && personalInfo}
       <div

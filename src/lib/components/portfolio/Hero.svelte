@@ -53,7 +53,7 @@
   }
 </script>
 
-<div class="relative w-full h-[180px] sm:h-[220px] md:h-[260px] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-b border-gray-700">
+<section class="relative w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 pt-20 sm:pt-24">
   <div class="absolute inset-0 flex items-center justify-center">
     {#if mounted}
       <div class="relative w-full max-w-4xl px-4" transition:fade={{ duration: 600 }}>
@@ -107,7 +107,10 @@
     <div class="absolute top-20 right-20 w-1.5 h-1.5 bg-blue-400 rounded-full opacity-40 animate-pulse" style="animation-delay: 0.5s;"></div>
     <div class="absolute bottom-20 left-1/4 w-1 h-1 bg-purple-400 rounded-full opacity-50 animate-pulse" style="animation-delay: 1s;"></div>
   </div>
-</div>
+
+  <!-- Gradiente de transición hacia abajo -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+</section>
 
 <style>
   @keyframes pulse {

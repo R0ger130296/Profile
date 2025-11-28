@@ -2,13 +2,15 @@
   import { useCertifications } from '$lib/presentation/hooks/usePortfolio';
   import { Section, Icon } from '$lib/components/ui';
   import { fly, fade } from 'svelte/transition';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
   import type { Certification } from '$lib/domain/entities';
 
   let visible = false;
   let certifications: Certification[] = [];
   let selectedCert: Certification | null = null;
   let showModal = false;
+  let originalOverflow = '';
 
   onMount(async () => {
     visible = true;
@@ -18,14 +20,25 @@
   function openModal(cert: typeof certifications[0]) {
     selectedCert = cert;
     showModal = true;
-    document.body.style.overflow = 'hidden';
+    if (browser) {
+      originalOverflow = document.body.style.overflow || '';
+      document.body.style.overflow = 'hidden';
+    }
   }
 
   function closeModal() {
     showModal = false;
     selectedCert = null;
-    document.body.style.overflow = '';
+    if (browser && originalOverflow !== undefined) {
+      document.body.style.overflow = originalOverflow;
+    }
   }
+
+  onDestroy(() => {
+    if (browser && originalOverflow !== undefined) {
+      document.body.style.overflow = originalOverflow;
+    }
+  });
 
   function handleKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape' && showModal) {
@@ -49,7 +62,7 @@
           on:keydown={(e) => e.key === 'Enter' && openModal(cert)}
         >
           <div
-            class="relative bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-300 transition-all duration-200"
+            class="relative bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-300 hover:shadow-lg hover-lift transition-all duration-300"
           >
             <!-- Imagen del certificado -->
             <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">

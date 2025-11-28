@@ -50,9 +50,9 @@
                   <span class="text-xs sm:text-sm font-medium text-gray-700">{skill.name}</span>
                   <span class="text-xs text-gray-500">{skill.level}%</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden group">
                   <div
-                    class="h-full rounded-full transition-all duration-1000 ease-out {getLevelColor(skill.level)}"
+                    class="h-full rounded-full transition-all duration-1000 ease-out {getLevelColor(skill.level)} group-hover:shadow-lg"
                     style="width: {skill.level}%"
                   ></div>
                 </div>
