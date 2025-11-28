@@ -13,7 +13,8 @@
     xl: 'w-32 h-32 text-4xl'
   };
 
-  const baseStyles = 'rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-br from-primary to-primary-dark';
+  const baseStyles =
+    'rounded-full flex items-center justify-center font-bold text-white bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 shadow-2xl ring-4 ring-white/20';
 
   $: avatarClass = cn(baseStyles, sizes[size], className);
   $: initials = name
@@ -28,6 +29,6 @@
   {#if image}
     <img src={image} alt={name} class="w-full h-full rounded-full object-cover" />
   {:else}
-    <span>{initials}</span>
+    <span class="drop-shadow-lg">{initials}</span>
   {/if}
 </div>

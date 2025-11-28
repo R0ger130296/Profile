@@ -12,11 +12,12 @@
 <svelte:head>
   <title>Roger Cedeño - Portafolio Profesional</title>
   <meta name="description" content="Portafolio profesional de Roger Cedeño - Software Engineer | Full Stack Developer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
   <Header />
-  <div class="max-w-6xl mx-auto px-4 md:px-8 pb-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 pb-12 space-y-12">
     <About />
     <Experience />
     <Education />
@@ -25,4 +26,13 @@
     <Languages />
     <References />
   </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-8 mt-16">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+      <p class="text-gray-400">
+        © {new Date().getFullYear()} Roger Cedeño. Desarrollado con ❤️ usando Svelte y Tailwind CSS
+      </p>
+    </div>
+  </footer>
 </div>
