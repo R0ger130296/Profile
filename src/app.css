@@ -1,0 +1,23 @@
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personalizadas para compatibilidad */
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-secondary: #10b981;
+  --color-secondary-dark: #059669;
+  --color-text: #1f2937;
+  --color-text-light: #6b7280;
+  --color-bg: #ffffff;
+  --color-bg-light: #f9fafb;
+}
+
+/* Estilos base personalizados si es necesario */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
