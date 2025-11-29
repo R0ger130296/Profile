@@ -15,6 +15,7 @@
 
   const dispatch = createEventDispatcher();
   let modalElement: HTMLDivElement;
+  let backdropElement: HTMLDivElement;
   const { lock, unlock } = useBodyScrollLock();
 
   function handleClose(): void {
@@ -35,14 +36,7 @@
   }
 
   function handleBackdropClick(event: MouseEvent): void {
-    if (closeOnBackdropClick && event.target === event.currentTarget) {
-      handleClose();
-    }
-  }
-
-  function handleBackdropKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
+    if (closeOnBackdropClick && event.target === backdropElement) {
       handleClose();
     }
   }
@@ -58,7 +52,7 @@
       // Focus on modal after animation
       setTimeout(() => {
         modalElement?.focus();
-      }, 100);
+      }, 150);
     } else {
       unlock();
     }
@@ -83,12 +77,11 @@
 {#if isOpen}
   <!-- Backdrop -->
   <div
+    bind:this={backdropElement}
     transition:fade={{ duration: 200 }}
     class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-primary-900/60 backdrop-blur-sm"
     on:click={handleBackdropClick}
-    on:keydown={handleBackdropKeydown}
     role="presentation"
-    tabindex="-1"
     aria-hidden="true"
   >
     <!-- Modal Content -->
