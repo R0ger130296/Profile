@@ -20,11 +20,11 @@
   );
 </script>
 
-<div class="relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-200 to-gray-300">
+<div class="relative overflow-hidden rounded-lg bg-linear-to-br from-gray-200 to-gray-300">
   {#if src}
     <img src={imageUrl} alt={alt} class={imageClass} width={width} height={height} loading="lazy" />
   {:else}
-    <div class="flex items-center justify-center h-full min-h-[200px] bg-gradient-to-br from-primary-100 to-secondary-100">
+    <div class="flex items-center justify-center h-full min-h-[200px] bg-linear-to-br from-primary-100 to-secondary-100">
       <div class="text-center p-8">
         <Icon name="Code" size={64} color="#64748b" className="mx-auto mb-4" />
         <p class="text-sm text-gray-500">{alt || 'Imagen'}</p>

@@ -234,11 +234,11 @@
 
   /* Divider Lines */
   .divider {
-    @apply h-px bg-gradient-to-r from-transparent via-primary-200 to-transparent;
+    @apply h-px bg-linear-to-r from-transparent via-primary-200 to-transparent;
   }
 
   .divider-vertical {
-    @apply w-px bg-gradient-to-b from-transparent via-primary-200 to-transparent;
+    @apply w-px bg-linear-to-b from-transparent via-primary-200 to-transparent;
   }
 
   /* Section Line Accent */
@@ -248,7 +248,7 @@
 
   .section-accent::before {
     content: '';
-    @apply absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-secondary-500 to-secondary-600 rounded-full;
+    @apply absolute left-0 top-0 w-1 h-full bg-linear-to-b from-secondary-500 to-secondary-600 rounded-full;
   }
 
   /* Fade Animations */

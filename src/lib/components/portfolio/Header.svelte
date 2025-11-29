@@ -24,7 +24,7 @@
         <!-- Left: Name & Title -->
         <div class="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
           <!-- Accent dot -->
-          <div class="hidden sm:block w-2 h-2 rounded-full bg-gradient-to-br from-secondary-400 to-secondary-600 shrink-0"></div>
+          <div class="hidden sm:block w-2 h-2 rounded-full bg-linear-to-br from-secondary-400 to-secondary-600 shrink-0"></div>
           
           <div class="flex items-center gap-2 sm:gap-3 min-w-0">
             <h1

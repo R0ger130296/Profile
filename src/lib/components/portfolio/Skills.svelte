@@ -11,10 +11,10 @@
   });
 
   function getLevelColor(level: number): string {
-    if (level >= 85) return 'bg-gradient-to-r from-secondary-500 to-secondary-600';
-    if (level >= 70) return 'bg-gradient-to-r from-primary-500 to-primary-600';
-    if (level >= 50) return 'bg-gradient-to-r from-primary-400 to-primary-500';
-    return 'bg-gradient-to-r from-primary-300 to-primary-400';
+    if (level >= 85) return 'bg-linear-to-r from-secondary-500 to-secondary-600';
+    if (level >= 70) return 'bg-linear-to-r from-primary-500 to-primary-600';
+    if (level >= 50) return 'bg-linear-to-r from-primary-400 to-primary-500';
+    return 'bg-linear-to-r from-primary-300 to-primary-400';
   }
 
   function getLevelLabel(level: number): string {

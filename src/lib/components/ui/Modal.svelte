@@ -104,7 +104,7 @@
       transition:fly={{ y: 16, duration: 250 }}
     >
       <!-- Modal Header -->
-      <div class="flex items-start justify-between p-5 sm:p-6 lg:p-8 border-b border-primary-100 bg-gradient-to-r from-primary-50/80 to-white">
+      <div class="flex items-start justify-between p-5 sm:p-6 lg:p-8 border-b border-primary-100 bg-linear-to-r from-primary-50/80 to-white">
         <div class="flex-1 pr-4 min-w-0">
           <h3 id="modal-title" class="text-lg sm:text-xl lg:text-2xl font-semibold text-primary-800 mb-1 truncate">
             {title}

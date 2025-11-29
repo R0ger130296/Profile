@@ -84,7 +84,7 @@
   <link rel="canonical" href="https://rogercedeno.dev" />
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-b from-white via-primary-50/30 to-white">
+<div class="min-h-screen bg-linear-to-b from-white via-primary-50/30 to-white">
   <!-- Fixed Header -->
   <nav class="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-lg border-b border-primary-200/50 shadow-xs">
     <Header />
@@ -96,7 +96,7 @@
   <!-- Main Content with Side Accent Line -->
   <main class="relative">
     <!-- Decorative side line for large screens -->
-    <div class="hidden xl:block absolute left-8 2xl:left-16 top-0 bottom-0 w-px bg-gradient-to-b from-secondary-300 via-primary-200 to-transparent"></div>
+    <div class="hidden xl:block absolute left-8 2xl:left-16 top-0 bottom-0 w-px bg-linear-to-b from-secondary-300 via-primary-200 to-transparent"></div>
     
     <!-- Content Container -->
     <div class="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pb-16 sm:pb-20 lg:pb-24 space-y-8 sm:space-y-12 lg:space-y-16 xl:space-y-20 pt-16 sm:pt-20 lg:pt-24 relative z-10">
@@ -157,7 +157,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="relative border-t border-primary-200/60 bg-gradient-to-b from-primary-50/50 to-primary-100/30 py-10 sm:py-14 lg:py-16 mt-12 sm:mt-16 lg:mt-20">
+  <footer class="relative border-t border-primary-200/60 bg-linear-to-b from-primary-50/50 to-primary-100/30 py-10 sm:py-14 lg:py-16 mt-12 sm:mt-16 lg:mt-20">
     <div class="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
         <p class="text-primary-600 text-sm sm:text-base font-medium">
@@ -171,7 +171,7 @@
       
       <!-- Subtle accent line -->
       <div class="mt-6 flex justify-center">
-        <div class="w-20 h-0.5 rounded-full bg-gradient-to-r from-secondary-400 to-primary-400"></div>
+        <div class="w-20 h-0.5 rounded-full bg-linear-to-r from-secondary-400 to-primary-400"></div>
       </div>
     </div>
   </footer>

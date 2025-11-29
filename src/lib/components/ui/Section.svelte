@@ -16,7 +16,7 @@
       {#if title}
         <div class="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-primary-100">
           <!-- Accent line -->
-          <div class="w-1 h-6 sm:h-7 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600"></div>
+          <div class="w-1 h-6 sm:h-7 rounded-full bg-linear-to-b from-secondary-400 to-secondary-600"></div>
           <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary-800 tracking-tight">
             {title}
           </h2>
@@ -28,7 +28,7 @@
     {#if title}
       <div class="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-primary-100">
         <!-- Accent line -->
-        <div class="w-1 h-6 sm:h-7 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600"></div>
+        <div class="w-1 h-6 sm:h-7 rounded-full bg-linear-to-b from-secondary-400 to-secondary-600"></div>
         <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary-800 tracking-tight">
           {title}
         </h2>

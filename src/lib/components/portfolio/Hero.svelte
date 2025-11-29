@@ -64,7 +64,7 @@
   }
 </script>
 
-<section class="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 pt-20 sm:pt-24">
+<section class="relative w-full min-h-[500px] sm:min-h-[600px] lg:min-h-[700px] overflow-hidden bg-linear-to-br from-primary-900 via-primary-800 to-primary-900 pt-20 sm:pt-24">
   <!-- Animated background grid -->
   <div class="absolute inset-0 opacity-10">
     <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
@@ -100,7 +100,7 @@
           </div>
           
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-            <span class="bg-gradient-to-r from-white via-secondary-200 to-white bg-clip-text text-transparent">
+            <span class="bg-linear-to-r from-white via-secondary-200 to-white bg-clip-text text-transparent">
               Creando Experiencias
             </span>
             <br />
@@ -174,14 +174,14 @@
           </div>
           
           <!-- Glow effect -->
-          <div class="absolute -inset-1 bg-gradient-to-r from-secondary-500/20 via-primary-500/20 to-secondary-500/20 rounded-xl blur-xl -z-10 animate-pulse"></div>
+          <div class="absolute -inset-1 bg-linear-to-r from-secondary-500/20 via-primary-500/20 to-secondary-500/20 rounded-xl blur-xl -z-10 animate-pulse"></div>
         </div>
       </div>
     {/if}
   </div>
 
   <!-- Gradient transition -->
-  <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-white via-white/80 to-transparent pointer-events-none"></div>
 </section>
 
 

@@ -26,7 +26,7 @@
           >
             <div class="flex items-start gap-4">
               <!-- Avatar con iniciales -->
-              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-linear-to-br from-primary-500 to-secondary-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
                 {ref.initials}
               </div>
 

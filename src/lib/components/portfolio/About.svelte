@@ -24,8 +24,8 @@
       >
         <div class="relative w-full h-full group">
           <!-- Decorative background -->
-          <div class="absolute inset-0 bg-gradient-to-br from-secondary-200 to-primary-200 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
-          <div class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+          <div class="absolute inset-0 bg-linear-to-br from-secondary-200 to-primary-200 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+          <div class="absolute inset-0 bg-linear-to-br from-primary-100 to-secondary-100 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
           
           <!-- Photo -->
           <img
@@ -36,7 +36,7 @@
           
           <!-- Status indicator -->
           <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-md">
-            <div class="w-4 h-4 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full animate-pulse-subtle"></div>
+            <div class="w-4 h-4 bg-linear-to-br from-secondary-400 to-secondary-500 rounded-full animate-pulse-subtle"></div>
           </div>
         </div>
       </div>

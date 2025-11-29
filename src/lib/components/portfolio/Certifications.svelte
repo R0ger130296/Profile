@@ -62,7 +62,7 @@
             class="relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-200 hover:shadow-lg hover-lift transition-all duration-300 group"
           >
             <!-- Imagen del certificado -->
-            <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">
+            <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-linear-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">
               {#if cert.image}
                 {#if cert.image.endsWith('.pdf')}
                   <!-- Para PDFs, mostrar preview usando object -->
@@ -75,10 +75,10 @@
                       title="Vista previa del certificado {cert.name}"
                     >
                       <!-- Fallback si el PDF no se puede mostrar -->
-                      <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50">
+                      <div class="w-full h-full flex items-center justify-center bg-linear-to-br from-primary-50 via-secondary-50 to-accent-50">
                         <div class="text-center p-4">
                           <div
-                            class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg"
+                            class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-2 sm:mb-3 bg-linear-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg"
                           >
                             <Icon name="Award" size={24} color="white" />
                           </div>
@@ -87,7 +87,7 @@
                       </div>
                     </object>
                     <!-- Overlay con gradiente para mejor visualización -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-black/10 to-transparent pointer-events-none"></div>
                     <!-- Badge PDF -->
                     <div class="absolute top-2 left-2 bg-primary-500/90 text-white text-[10px] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md font-semibold backdrop-blur-sm shadow-md">
                       PDF
@@ -104,14 +104,14 @@
                 {/if}
               {:else}
                 <!-- Placeholder si no hay imagen -->
-                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                <div class="w-full h-full flex items-center justify-center bg-linear-to-br from-gray-100 to-gray-200">
                   <Icon name="Award" size={48} color="#9CA3AF" />
                 </div>
               {/if}
               
               <!-- Overlay con efecto hover -->
               <div
-                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4"
+                class="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4"
               >
                 <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                   <div class="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
@@ -156,7 +156,7 @@
       <div class="flex flex-col items-center justify-center min-h-[300px] sm:min-h-[400px] bg-gray-50 rounded-lg p-4 sm:p-6 md:p-8">
         <div class="text-center mb-4 sm:mb-6">
           <div
-            class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl"
+            class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-3 sm:mb-4 bg-linear-to-br from-primary-500 to-secondary-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl"
           >
             <Icon name="Award" size={32} color="white" />
           </div>
@@ -165,7 +165,7 @@
             href={selectedCert.image}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            class="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-linear-to-r from-primary-600 to-secondary-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <Icon name="Download" size={18} color="white" />
             Abrir PDF

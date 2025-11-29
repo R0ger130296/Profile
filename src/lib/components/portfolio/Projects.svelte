@@ -51,14 +51,14 @@
         >
           <!-- Imagen del proyecto -->
           {#if project.image}
-            <div class="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
+            <div class="relative aspect-video bg-linear-to-br from-gray-100 to-gray-200 overflow-hidden">
               <img
                 src={project.image}
                 alt={project.name}
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               {#if project.featured}
                 <div class="absolute top-3 right-3 bg-primary-500 text-white text-xs font-bold px-2 py-1 rounded-full">
                   Destacado
@@ -66,7 +66,7 @@
               {/if}
             </div>
           {:else}
-            <div class="relative aspect-video bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
+            <div class="relative aspect-video bg-linear-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
               <Icon name="Code" size={48} color="#64748b" />
             </div>
           {/if}
@@ -190,7 +190,7 @@
             href={selectedProject.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all font-medium"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary-600 to-secondary-600 text-white rounded-lg hover:from-primary-700 hover:to-secondary-700 transition-all font-medium"
           >
             <Icon name="Globe" size={18} color="white" />
             Ver Proyecto

@@ -72,7 +72,7 @@
         >
           <div class="relative bg-white border border-primary-200/60 rounded-xl lg:rounded-2xl p-5 sm:p-6 lg:p-7 xl:p-8 hover:border-secondary-300 hover:shadow-md hover-lift transition-all duration-200 group overflow-hidden">
             <!-- Subtle accent on left -->
-            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary-400 to-secondary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-l-xl"></div>
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-linear-to-b from-secondary-400 to-secondary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-l-xl"></div>
             
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-6 mb-4">
               <div class="flex-1 min-w-0">
