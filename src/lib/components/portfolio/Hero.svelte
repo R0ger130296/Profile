@@ -19,7 +19,7 @@
     mounted = true;
     typeCode();
     
-    // Animación del cursor parpadeante
+    // Blinking cursor animation
     const cursorInterval = setInterval(() => {
       showCursor = !showCursor;
     }, 530);
@@ -29,7 +29,7 @@
 
   function typeCode() {
     if (currentLine >= codeLines.length) {
-      // Reiniciar después de un delay
+      // Restart after a delay
       setTimeout(() => {
         displayedCode = '';
         currentLine = 0;

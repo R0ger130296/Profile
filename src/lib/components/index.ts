@@ -1,2 +1,2 @@
-// Componentes del portafolio se exportan desde su propio índice
-// Ver: src/lib/components/portfolio/index.ts
+// Portfolio components are exported from their own index
+// See: src/lib/components/portfolio/index.ts

@@ -16,46 +16,58 @@
 
 <Section title="Sobre Mí">
   {#if visible && personalInfo}
-    <div transition:fade={{ duration: 600 }} class="flex flex-col md:flex-row gap-6 md:gap-8 items-center md:items-start">
-      <!-- Foto circular -->
+    <div transition:fade={{ duration: 600 }} class="flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-16 items-center lg:items-start">
+      <!-- Profile Photo -->
       <div 
-        class="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 mx-auto md:mx-0"
+        class="shrink-0 w-36 h-36 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 mx-auto lg:mx-0"
         transition:fly={{ x: -20, duration: 600, delay: 200 }}
       >
-        <div class="relative w-full h-full">
-          <div class="absolute inset-0 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-full transform rotate-6 animate-float"></div>
+        <div class="relative w-full h-full group">
+          <!-- Decorative background -->
+          <div class="absolute inset-0 bg-gradient-to-br from-secondary-200 to-primary-200 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500"></div>
+          
+          <!-- Photo -->
           <img
             src="/me/roger.jpg"
             alt="Roger Cedeño"
-            class="relative w-full h-full rounded-full shadow-xl object-cover border-4 border-white"
+            class="relative w-full h-full rounded-2xl shadow-lg object-cover border-4 border-white"
           />
+          
+          <!-- Status indicator -->
+          <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1 shadow-md">
+            <div class="w-4 h-4 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full animate-pulse-subtle"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Texto -->
+      <!-- Content -->
       <div 
-        class="flex-1 text-center md:text-left"
+        class="flex-1 text-center lg:text-left"
         transition:fly={{ x: 20, duration: 600, delay: 300 }}
       >
-        <div class="prose prose-lg max-w-none">
-          <p class="text-sm sm:text-base leading-relaxed text-gray-700">{personalInfo.summary}</p>
+        <div class="max-w-2xl mx-auto lg:mx-0">
+          <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-primary-600 mb-6">
+            {personalInfo.summary}
+          </p>
+          
+          <!-- Quick stats -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 lg:gap-6">
+            <div class="flex items-center gap-2 text-sm lg:text-base text-primary-500">
+              <span class="w-2 h-2 rounded-full bg-secondary-400"></span>
+              <span class="font-medium">+4 años de experiencia</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm lg:text-base text-primary-500">
+              <span class="w-2 h-2 rounded-full bg-secondary-400"></span>
+              <span class="font-medium">Full Stack Developer</span>
+            </div>
+            <div class="flex items-center gap-2 text-sm lg:text-base text-primary-500">
+              <span class="w-2 h-2 rounded-full bg-secondary-400"></span>
+              <span class="font-medium">Consultor Técnico</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   {/if}
 </Section>
-
-<style>
-  @keyframes float {
-    0%, 100% {
-      transform: rotate(6deg) translateY(0px);
-    }
-    50% {
-      transform: rotate(6deg) translateY(-10px);
-    }
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-</style>

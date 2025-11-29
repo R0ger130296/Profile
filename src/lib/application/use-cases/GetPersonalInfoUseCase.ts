@@ -1,6 +1,6 @@
 /**
- * Caso de Uso: Obtener Información Personal
- * Application Layer - Lógica de aplicación
+ * Use Case: Get Personal Information
+ * Application Layer - Application logic
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { PersonalInfo } from '../../domain/entities';

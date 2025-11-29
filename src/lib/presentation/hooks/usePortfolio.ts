@@ -1,6 +1,6 @@
 /**
- * Hook de Presentación
- * Conecta la capa de presentación con los casos de uso
+ * Presentation Hook
+ * Connects the presentation layer with use cases
  */
 import { container } from '../../infrastructure/di/Container';
 import type {
@@ -15,7 +15,7 @@ import type {
 } from '../../domain/entities';
 
 /**
- * Hook para obtener información personal
+ * Hook to get personal information
  */
 export async function usePersonalInfo(): Promise<PersonalInfo> {
   const useCase = container.getGetPersonalInfoUseCase();
@@ -23,7 +23,7 @@ export async function usePersonalInfo(): Promise<PersonalInfo> {
 }
 
 /**
- * Hook para obtener experiencias
+ * Hook to get experiences
  */
 export async function useExperiences(): Promise<Experience[]> {
   const useCase = container.getGetExperiencesUseCase();
@@ -31,7 +31,7 @@ export async function useExperiences(): Promise<Experience[]> {
 }
 
 /**
- * Hook para obtener educación
+ * Hook to get education
  */
 export async function useEducation(): Promise<Education[]> {
   const useCase = container.getGetEducationUseCase();
@@ -39,7 +39,7 @@ export async function useEducation(): Promise<Education[]> {
 }
 
 /**
- * Hook para obtener certificaciones
+ * Hook to get certifications
  */
 export async function useCertifications(): Promise<Certification[]> {
   const useCase = container.getGetCertificationsUseCase();
@@ -47,7 +47,7 @@ export async function useCertifications(): Promise<Certification[]> {
 }
 
 /**
- * Hook para obtener habilidades
+ * Hook to get skills
  */
 export async function useSkills(): Promise<Skill[]> {
   const useCase = container.getGetSkillsUseCase();
@@ -55,7 +55,7 @@ export async function useSkills(): Promise<Skill[]> {
 }
 
 /**
- * Hook para obtener habilidades blandas
+ * Hook to get soft skills
  */
 export async function useSoftSkills(): Promise<Skill[]> {
   const useCase = container.getGetSkillsUseCase();
@@ -63,7 +63,7 @@ export async function useSoftSkills(): Promise<Skill[]> {
 }
 
 /**
- * Hook para obtener idiomas
+ * Hook to get languages
  */
 export async function useLanguages(): Promise<Language[]> {
   const useCase = container.getGetLanguagesUseCase();
@@ -71,7 +71,7 @@ export async function useLanguages(): Promise<Language[]> {
 }
 
 /**
- * Hook para obtener referencias
+ * Hook to get references
  */
 export async function useReferences(): Promise<Reference[]> {
   const useCase = container.getGetReferencesUseCase();
@@ -79,7 +79,7 @@ export async function useReferences(): Promise<Reference[]> {
 }
 
 /**
- * Hook para obtener proyectos
+ * Hook to get projects
  */
 export async function useProjects(): Promise<Project[]> {
   const useCase = container.getGetProjectsUseCase();
@@ -87,7 +87,7 @@ export async function useProjects(): Promise<Project[]> {
 }
 
 /**
- * Hook para obtener proyectos destacados
+ * Hook to get featured projects
  */
 export async function useFeaturedProjects(): Promise<Project[]> {
   const useCase = container.getGetProjectsUseCase();

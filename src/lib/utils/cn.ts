@@ -1,10 +1,10 @@
-// Buenas prácticas: Utility function centralizada para combinar clases
+// Best practices: Centralized utility function to combine classes
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 /**
  * Combina clases CSS de manera inteligente
- * Usa clsx para manejar condicionales y tailwind-merge para resolver conflictos
+ * Uses clsx to handle conditionals and tailwind-merge to resolve conflicts
  */
 export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));

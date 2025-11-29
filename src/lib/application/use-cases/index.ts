@@ -1,5 +1,5 @@
 /**
- * Barrel export para casos de uso
+ * Barrel export for use cases
  */
 export { GetPersonalInfoUseCase } from './GetPersonalInfoUseCase';
 export { GetExperiencesUseCase } from './GetExperiencesUseCase';

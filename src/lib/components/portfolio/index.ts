@@ -1,4 +1,4 @@
-// Buenas prácticas: Exportar componentes desde un índice central
+// Best practices: Export components from a central index
 export { default as Header } from './Header.svelte';
 export { default as About } from './About.svelte';
 export { default as Experience } from './Experience.svelte';

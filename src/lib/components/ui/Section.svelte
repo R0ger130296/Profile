@@ -7,26 +7,32 @@
   export let card: boolean = true;
   export let padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
-  $: sectionClass = cn('mb-12', className);
+  $: sectionClass = cn('mb-8 lg:mb-12', className);
 </script>
 
 <section class={sectionClass}>
   {#if card}
-    <Card {padding} className="border border-gray-200 bg-white shadow-soft hover:shadow-medium transition-shadow duration-300">
+    <Card {padding} className="border border-primary-200/60 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md hover:border-primary-300/60 transition-all duration-300">
       {#if title}
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 pb-4 border-b border-gray-200 relative">
-          <span class="absolute bottom-0 left-0 w-16 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500"></span>
-          {title}
-        </h2>
+        <div class="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-primary-100">
+          <!-- Accent line -->
+          <div class="w-1 h-6 sm:h-7 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600"></div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary-800 tracking-tight">
+            {title}
+          </h2>
+        </div>
       {/if}
       <slot />
     </Card>
   {:else}
     {#if title}
-      <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 pb-4 border-b border-gray-200 relative">
-        <span class="absolute bottom-0 left-0 w-16 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500"></span>
-        {title}
-      </h2>
+      <div class="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-primary-100">
+        <!-- Accent line -->
+        <div class="w-1 h-6 sm:h-7 rounded-full bg-gradient-to-b from-secondary-400 to-secondary-600"></div>
+        <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-primary-800 tracking-tight">
+          {title}
+        </h2>
+      </div>
     {/if}
     <slot />
   {/if}

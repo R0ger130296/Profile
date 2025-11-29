@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Education
- * Representa una formación académica
+ * Domain Entity: Education
+ * Represents an academic degree
  */
 export class Education {
   constructor(

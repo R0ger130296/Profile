@@ -1,4 +1,4 @@
-// Buenas prácticas: Centralizar datos en un archivo separado
+// Best practices: Centralize data in a separate file
 export interface Experience {
   id: number;
   title: string;
@@ -155,7 +155,7 @@ export const education: Education[] = [
   }
 ];
 
-// Habilidades con niveles basados en experiencia (0-100)
+// Skills with experience-based levels (0-100)
 export const skills = {
   frontend: [
     { name: 'React', level: 90 },

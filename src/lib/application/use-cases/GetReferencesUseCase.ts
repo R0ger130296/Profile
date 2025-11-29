@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Referencias
+ * Use Case: Get References
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Reference } from '../../domain/entities';

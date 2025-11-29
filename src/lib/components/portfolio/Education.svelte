@@ -1,7 +1,7 @@
 <script lang="ts">
   import { education } from '$lib/data/portfolio';
-  import { Section, Card, Badge, Icon } from '$lib/components/ui';
-  import { fly } from 'svelte/transition';
+  import { Section } from '$lib/components/ui';
+  import { fade } from 'svelte/transition';
   import { onMount } from 'svelte';
 
   let visible = false;

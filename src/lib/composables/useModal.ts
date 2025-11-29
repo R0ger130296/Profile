@@ -1,8 +1,8 @@
 /**
- * Composable para manejo de modales
- * Aplica principios SOLID:
- * - Single Responsibility: Solo maneja el estado del modal
- * - Open/Closed: Extensible sin modificar
+ * Composable for modal management
+ * Applies SOLID principles:
+ * - Single Responsibility: Only manages modal state
+ * - Open/Closed: Extensible without modification
  */
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
@@ -55,14 +55,14 @@ let originalPaddingRight = '';
 function lockBodyScroll(): void {
   if (!browser) return;
 
-  // Guardar valores originales
+  // Save original values
   originalOverflow = document.body.style.overflow || '';
   originalPaddingRight = document.body.style.paddingRight || '';
 
-  // Calcular ancho del scrollbar antes de ocultarlo
+  // Calculate scrollbar width before hiding it
   scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-  // Bloquear scroll
+  // Lock scroll
   document.body.style.overflow = 'hidden';
   if (scrollbarWidth > 0) {
     document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -72,11 +72,11 @@ function lockBodyScroll(): void {
 function unlockBodyScroll(): void {
   if (!browser) return;
 
-  // Restaurar valores originales
+  // Restore original values
   document.body.style.overflow = originalOverflow;
   document.body.style.paddingRight = originalPaddingRight;
 }
 
-// Exportar instancia única (Singleton pattern)
+// Export single instance (Singleton pattern)
 export const modalStore = createModalStore();
 

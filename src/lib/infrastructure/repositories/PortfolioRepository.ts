@@ -1,6 +1,6 @@
 /**
- * Implementación del Repositorio
- * Infrastructure Layer - Acceso a datos
+ * Repository Implementation
+ * Infrastructure Layer - Data access
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import {
@@ -104,7 +104,7 @@ export class PortfolioRepository implements IPortfolioRepository {
       }
     });
 
-    // Agregar metodologías
+    // Add methodologies
     skillsData.methodologies.forEach((methodology) => {
       skills.push(new Skill(methodology, 'methodologies'));
     });

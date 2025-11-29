@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Certification
- * Representa una certificación profesional
+ * Domain Entity: Certification
+ * Represents a professional certification
  */
 export class Certification {
   constructor(

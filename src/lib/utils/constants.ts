@@ -1,4 +1,4 @@
-// Buenas prácticas: Centralizar constantes y configuraciones
+// Best practices: Centralize constants and configurations
 export const BREAKPOINTS = {
   mobile: 768,
   tablet: 1024,

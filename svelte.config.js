@@ -6,7 +6,7 @@ const config = {
   preprocess: vitePreprocess(),
   kit: {
     adapter: adapter({
-      runtime: 'nodejs20.x' // Especificar Node.js 20 para Vercel
+      runtime: 'nodejs20.x' // Specify Node.js 20 for Vercel
     })
   }
 };

@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Experiencias
+ * Use Case: Get Experiences
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Experience } from '../../domain/entities';

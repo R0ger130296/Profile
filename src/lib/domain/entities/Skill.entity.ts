@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Skill
- * Representa una habilidad técnica o blanda
+ * Domain Entity: Skill
+ * Represents a technical or soft skill
  */
 export class Skill {
   constructor(

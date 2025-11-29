@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Educación
+ * Use Case: Get Education
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Education } from '../../domain/entities';

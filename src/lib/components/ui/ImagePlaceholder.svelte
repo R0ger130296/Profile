@@ -8,7 +8,7 @@
   export let height: number = 300;
   export let objectFit: 'cover' | 'contain' | 'fill' = 'cover';
 
-  // Placeholder service para imágenes de ejemplo
+  // Placeholder service for sample images
   const placeholderUrl = `https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=${width}&h=${height}&fit=crop&auto=format&q=80`;
 
   $: imageUrl = src || placeholderUrl;

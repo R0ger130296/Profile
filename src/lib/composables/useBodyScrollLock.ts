@@ -1,12 +1,12 @@
 /**
- * Composable para manejo de scroll del body
- * Single Responsibility: Solo maneja el bloqueo/desbloqueo del scroll
- * Mejorado para Svelte 5 con runes
+ * Composable for body scroll management
+ * Single Responsibility: Only handles scroll lock/unlock
+ * Enhanced for Svelte 5 with runes
  */
 import { onDestroy } from 'svelte';
 import { browser } from '$app/environment';
 
-// Estado global compartido para manejar múltiples locks
+// Shared global state to handle multiple locks
 let activeLocks = 0;
 let originalOverflow = '';
 let originalPaddingRight = '';
@@ -17,7 +17,7 @@ function lockBodyScroll(): void {
 
   activeLocks++;
 
-  // Solo aplicar el lock la primera vez
+  // Only apply the lock the first time
   if (activeLocks === 1) {
     originalOverflow = document.body.style.overflow || '';
     originalPaddingRight = document.body.style.paddingRight || '';
@@ -35,7 +35,7 @@ function unlockBodyScroll(): void {
 
   activeLocks = Math.max(0, activeLocks - 1);
 
-  // Solo desbloquear cuando no hay más locks activos
+  // Only unlock when there are no more active locks
   if (activeLocks === 0) {
     document.body.style.overflow = originalOverflow;
     document.body.style.paddingRight = originalPaddingRight;
@@ -43,7 +43,7 @@ function unlockBodyScroll(): void {
 }
 
 export function useBodyScrollLock() {
-  // Auto-unlock al desmontar
+  // Auto-unlock on unmount
   onDestroy(() => {
     if (activeLocks > 0) {
       unlockBodyScroll();

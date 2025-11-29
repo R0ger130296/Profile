@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Habilidades
+ * Use Case: Get Skills
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Skill } from '../../domain/entities';

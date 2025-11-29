@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: PersonalInfo
- * Representa la información personal del portafolio
+ * Domain Entity: PersonalInfo
+ * Represents personal portfolio information
  */
 export class PersonalInfo {
   constructor(

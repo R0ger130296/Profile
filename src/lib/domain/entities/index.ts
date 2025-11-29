@@ -1,5 +1,5 @@
 /**
- * Barrel export para entidades del dominio
+ * Barrel export for domain entities
  */
 export { Experience } from './Experience.entity';
 export { Education } from './Education.entity';

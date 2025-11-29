@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Certificaciones
+ * Use Case: Get Certifications
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Certification } from '../../domain/entities';

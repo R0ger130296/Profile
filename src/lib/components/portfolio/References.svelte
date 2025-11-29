@@ -22,7 +22,7 @@
           <Card
             padding="md"
             elevation="sm"
-            className="hover:shadow-medium transition-shadow duration-300"
+            className="hover:shadow-md transition-shadow duration-300"
           >
             <div class="flex items-start gap-4">
               <!-- Avatar con iniciales -->

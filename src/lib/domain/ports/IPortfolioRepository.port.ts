@@ -1,7 +1,7 @@
 /**
- * Puerto (Interface) del Dominio
- * Define el contrato para acceder a los datos del portafolio
- * La implementación concreta estará en la capa de infraestructura
+ * Domain Port (Interface)
+ * Defines the contract to access portfolio data
+ * The concrete implementation will be in the infrastructure layer
  */
 import type {
   Experience,

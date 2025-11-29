@@ -1,5 +1,5 @@
 /**
- * Caso de Uso: Obtener Idiomas
+ * Use Case: Get Languages
  */
 import type { IPortfolioRepository } from '../../domain/ports/IPortfolioRepository.port';
 import type { Language } from '../../domain/entities';

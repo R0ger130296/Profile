@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Importar iconos individuales de lucide-svelte (mejor para tree-shaking)
+  // Import individual icons from lucide-svelte (better for tree-shaking)
   import Mail from 'lucide-svelte/icons/mail';
   import Phone from 'lucide-svelte/icons/phone';
   import MapPin from 'lucide-svelte/icons/map-pin';
@@ -22,7 +22,7 @@
   import X from 'lucide-svelte/icons/x';
   import Download from 'lucide-svelte/icons/download';
 
-  // Mapeo de nombres a componentes
+  // Name to component mapping
   const iconMap: Record<string, any> = {
     Mail,
     Phone,

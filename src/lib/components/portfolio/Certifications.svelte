@@ -30,7 +30,7 @@
 
   function handlePageChange(event: CustomEvent<{ page: number; startIndex: number }>) {
     currentPage = event.detail.page;
-    // Scroll suave hacia arriba de la sección
+    // Smooth scroll to the top of the section
     if (browser) {
       const section = document.querySelector('[data-section="certifications"]');
       if (section) {
@@ -59,7 +59,7 @@
           on:keydown={(e) => e.key === 'Enter' && openModal(cert)}
         >
           <div
-            class="relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-200 hover:shadow-large hover-lift transition-all duration-300 group"
+            class="relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary-200 hover:shadow-lg hover-lift transition-all duration-300 group"
           >
             <!-- Imagen del certificado -->
             <div class="relative aspect-[4/3] sm:aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden max-h-[200px] sm:max-h-none">

@@ -1,10 +1,10 @@
 /**
- * Mapeo de tecnologías a nombres de iconos
- * Los iconos deben estar en /static/icons/tech/{iconName}.svg
- * Puedes descargarlos de: https://simpleicons.org/
+ * Technology to icon name mapping
+ * Icons should be in /static/icons/tech/{iconName}.svg
+ * You can download them from: https://simpleicons.org/
  */
 export const techIconMap: Record<string, string> = {
-  // Frontend
+  // Frontend frameworks & libraries
   'React': 'react',
   'Next.js': 'nextdotjs',
   'Angular': 'angular',
@@ -16,15 +16,15 @@ export const techIconMap: Record<string, string> = {
   'CSS': 'css3',
   'Micro-Frontend': 'micro-frontend',
   
-  // Backend
+  // Backend frameworks
   'NestJS': 'nestjs',
   'Spring Framework': 'spring',
   'Python': 'python',
   
-  // Mobile
+  // Mobile development
   'Flutter': 'flutter',
   
-  // Tools
+  // Development tools
   'Git': 'git',
   'GitHub': 'github',
   'Bitbucket': 'bitbucket',
@@ -35,34 +35,34 @@ export const techIconMap: Record<string, string> = {
   'Windows': 'windows',
   'Discord': 'discord',
   
-  // Metodologías (usar iconos genéricos o personalizados)
+  // Methodologies (use generic or custom icons)
   'SCRUM': 'scrum',
   'PMP': 'pmp',
   'Principios SOLID': 'solid'
 };
 
 /**
- * Obtiene la ruta del icono para una tecnología
- * Primero intenta usar el icono local, si no existe usa el CDN
- * @param techName Nombre de la tecnología
- * @returns Ruta del icono (local o CDN) o null si no existe
+ * Gets the icon path for a technology
+ * First tries to use the local icon, if it doesn't exist uses CDN
+ * @param techName Technology name
+ * @returns Icon path (local or CDN) or null if it doesn't exist
  */
 export function getTechIconPath(techName: string): string | null {
   const iconName = techIconMap[techName];
   if (!iconName) return null;
   
-  // Primero intentar usar el icono local
+  // First try to use the local icon
   const localPath = `/icons/tech/${iconName}.svg`;
   
-  // Si el icono no existe localmente, usar CDN como fallback
-  // El componente verificará si el icono local existe antes de usar el CDN
+  // If the icon doesn't exist locally, use CDN as fallback
+  // The component will verify if the local icon exists before using the CDN
   return localPath;
 }
 
 /**
- * Obtiene la URL del CDN para un icono
- * @param techName Nombre de la tecnología
- * @returns URL del CDN o null si no existe
+ * Gets the CDN URL for an icon
+ * @param techName Technology name
+ * @returns CDN URL or null if it doesn't exist
  */
 export function getTechIconCDN(techName: string): string | null {
   const iconName = techIconMap[techName];
@@ -71,9 +71,9 @@ export function getTechIconCDN(techName: string): string | null {
 }
 
 /**
- * Obtiene el nombre del icono para una tecnología
- * @param techName Nombre de la tecnología
- * @returns Nombre del icono o null si no existe
+ * Gets the icon name for a technology
+ * @param techName Technology name
+ * @returns Icon name or null if it doesn't exist
  */
 export function getTechIconName(techName: string): string | null {
   return techIconMap[techName] || null;

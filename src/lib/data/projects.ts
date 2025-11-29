@@ -1,10 +1,10 @@
 /**
- * Datos de proyectos
- * Single Source of Truth para proyectos del portafolio
+ * Project data
+ * Single Source of Truth for portfolio projects
  */
 import type { Project } from '$lib/domain/entities';
 
-// Tipo para datos raw antes de crear entidades
+// Type for raw data before creating entities
 interface ProjectData {
   id: number;
   name: string;

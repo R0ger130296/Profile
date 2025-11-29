@@ -43,7 +43,7 @@
       {#if visible}
         <div
           transition:fly={{ y: 20, duration: 500, delay: index * 50 }}
-          class="group cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-200 hover:shadow-large hover-lift transition-all duration-300"
+          class="group cursor-pointer bg-white rounded-xl border border-gray-200 overflow-hidden hover:border-primary-200 hover:shadow-lg hover-lift transition-all duration-300"
           on:click={() => openModal(project)}
           on:keydown={(e) => e.key === 'Enter' && openModal(project)}
           role="button"

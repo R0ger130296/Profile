@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Language
- * Representa un idioma hablado
+ * Domain Entity: Language
+ * Represents a spoken language
  */
 export class Language {
   constructor(

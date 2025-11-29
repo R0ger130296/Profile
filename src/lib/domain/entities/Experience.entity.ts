@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Experience
- * Representa una experiencia laboral en el portafolio
+ * Domain Entity: Experience
+ * Represents a work experience in the portfolio
  */
 export class Experience {
   constructor(

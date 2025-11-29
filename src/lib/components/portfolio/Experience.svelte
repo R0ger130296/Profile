@@ -11,7 +11,7 @@
   let selectedExperience: Experience | null = null;
   let showModal = false;
   let currentPage = 1;
-  const itemsPerPage = 3; // 3 experiencias por página
+  const itemsPerPage = 3;
 
   onMount(async () => {
     visible = true;
@@ -43,7 +43,7 @@
 
   function handlePageChange(event: CustomEvent<{ page: number; startIndex: number }>) {
     currentPage = event.detail.page;
-    // Scroll suave hacia arriba de la sección
+    // Smooth scroll to the top of the section
     if (browser) {
       const section = document.querySelector('[data-section="experience"]');
       if (section) {
@@ -59,7 +59,7 @@
 </script>
 
 <Section title="Experiencia Profesional">
-  <div data-section="experience" class="space-y-4 sm:space-y-6">
+  <div data-section="experience" class="space-y-4 sm:space-y-5 lg:space-y-6">
     {#each paginatedExperiences as experience, index (experience.id)}
       {#if visible}
         <div
@@ -70,31 +70,40 @@
           role="button"
           tabindex="0"
         >
-          <div class="bg-white border border-gray-200 rounded-xl p-5 sm:p-7 hover:border-primary-200 hover:shadow-large hover-lift transition-all duration-300 group">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
-              <div class="flex-1">
-                <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+          <div class="relative bg-white border border-primary-200/60 rounded-xl lg:rounded-2xl p-5 sm:p-6 lg:p-7 xl:p-8 hover:border-secondary-300 hover:shadow-md hover-lift transition-all duration-200 group overflow-hidden">
+            <!-- Subtle accent on left -->
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary-400 to-secondary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-l-xl"></div>
+            
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 lg:gap-6 mb-4">
+              <div class="flex-1 min-w-0">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-semibold text-primary-800 mb-2 group-hover:text-secondary-700 transition-colors truncate">
                   {experience.title}
                 </h3>
-                <p class="text-sm sm:text-base font-medium text-gray-700 mb-1">{experience.company}</p>
-                <p class="text-xs sm:text-sm text-gray-500">{experience.location}</p>
+                <div class="flex flex-wrap items-center gap-2 text-sm lg:text-base">
+                  <span class="font-medium text-primary-700">{experience.company}</span>
+                  <span class="w-1 h-1 rounded-full bg-primary-300"></span>
+                  <span class="text-primary-500">{experience.location}</span>
+                </div>
               </div>
-              <div class="text-xs sm:text-sm text-gray-500 font-medium whitespace-nowrap">
-                {experience.startDate} - {experience.endDate}
+              <div class="flex items-center gap-2 text-sm lg:text-base text-primary-500 font-medium whitespace-nowrap bg-primary-50 px-3 py-1.5 rounded-lg">
+                <Icon name="Calendar" size={14} color="currentColor" />
+                <span>{experience.startDate} - {experience.endDate}</span>
               </div>
             </div>
 
-            <ul class="space-y-1.5 mb-3">
+            <ul class="space-y-2 mb-4">
               {#each getMainResponsibilities(experience.responsibilities) as responsibility}
-                <li class="flex items-start gap-2 text-sm text-gray-700 leading-relaxed">
-                  <span class="text-gray-400 mt-1.5 flex-shrink-0">•</span>
+                <li class="flex items-start gap-3 text-sm lg:text-base text-primary-600 leading-relaxed">
+                  <span class="text-secondary-500 mt-1 shrink-0">
+                    <Icon name="ChevronRight" size={14} color="currentColor" />
+                  </span>
                   <span>{responsibility}</span>
                 </li>
               {/each}
             </ul>
 
             {#if experience.responsibilities.length > 3}
-              <div class="flex items-center gap-2 text-sm text-primary-600 font-medium group-hover:text-primary-700 transition-colors">
+              <div class="flex items-center gap-2 text-sm font-medium text-secondary-600 group-hover:text-secondary-700 transition-colors">
                 <span>Ver más detalles</span>
                 <Icon name="ChevronRight" size={16} color="currentColor" />
               </div>
@@ -105,7 +114,6 @@
     {/each}
   </div>
 
-  <!-- Paginación -->
   <Pagination
     bind:currentPage={currentPage}
     {totalPages}
@@ -115,21 +123,20 @@
   />
 </Section>
 
-<!-- Modal para ver detalles completos -->
 <Modal
   bind:isOpen={showModal}
   title={getModalTitle()}
   subtitle={getModalSubtitle()}
-  maxWidth="max-w-3xl"
+  maxWidth="max-w-3xl lg:max-w-4xl"
   on:close={closeModal}
 >
   {#if selectedExperience}
     <div>
-      <h4 class="text-base font-semibold text-gray-900 mb-4">Responsabilidades y Logros:</h4>
-      <ul class="space-y-2.5">
+      <h4 class="text-base lg:text-lg font-semibold text-primary-800 mb-5">Responsabilidades y Logros:</h4>
+      <ul class="space-y-3">
         {#each selectedExperience.responsibilities as responsibility}
-          <li class="flex items-start gap-3 text-sm sm:text-base text-gray-700 leading-relaxed">
-            <span class="text-primary-500 mt-1.5 flex-shrink-0">
+          <li class="flex items-start gap-3 text-sm sm:text-base lg:text-lg text-primary-700 leading-relaxed">
+            <span class="text-secondary-500 mt-1 shrink-0">
               <Icon name="CheckCircle" size={18} color="currentColor" />
             </span>
             <span>{responsibility}</span>

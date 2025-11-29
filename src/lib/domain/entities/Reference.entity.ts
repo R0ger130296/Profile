@@ -1,6 +1,6 @@
 /**
- * Entidad de Dominio: Reference
- * Representa una referencia profesional
+ * Domain Entity: Reference
+ * Represents a professional reference
  */
 export class Reference {
   constructor(

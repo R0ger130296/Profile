@@ -1,8 +1,8 @@
 /**
- * Entidad de Proyecto
- * Aplica principios SOLID:
- * - Single Responsibility: Representa solo un proyecto
- * - Open/Closed: Extensible mediante herencia o composición
+ * Domain Entity: Project
+ * Applies SOLID principles:
+ * - Single Responsibility: Represents only one project
+ * - Open/Closed: Extensible through inheritance or composition
  */
 export class Project {
   constructor(

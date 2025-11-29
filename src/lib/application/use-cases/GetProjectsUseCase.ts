@@ -1,8 +1,8 @@
 /**
- * Caso de uso: Obtener proyectos
- * Aplica principios SOLID:
- * - Single Responsibility: Solo obtiene proyectos
- * - Dependency Inversion: Depende de la abstracción (IPortfolioRepository)
+ * Use Case: Get Projects
+ * Applies SOLID principles:
+ * - Single Responsibility: Only retrieves projects
+ * - Dependency Inversion: Depends on abstraction (IPortfolioRepository)
  */
 import type { IPortfolioRepository } from '$lib/domain/ports';
 import type { Project } from '$lib/domain/entities';

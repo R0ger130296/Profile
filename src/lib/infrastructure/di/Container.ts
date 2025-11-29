@@ -1,6 +1,6 @@
 /**
- * Contenedor de Dependencias (Dependency Injection Container)
- * Infrastructure Layer - Inyección de dependencias
+ * Dependency Injection Container
+ * Infrastructure Layer - Dependency injection
  */
 import { PortfolioRepository } from '../repositories/PortfolioRepository';
 import {
@@ -15,13 +15,13 @@ import {
 } from '../../application/use-cases';
 
 /**
- * Container singleton para gestionar las dependencias
+ * Singleton container to manage dependencies
  */
 class Container {
   private static instance: Container;
   private repository: PortfolioRepository;
   
-  // Casos de uso
+  // Use cases
   private getPersonalInfoUseCase: GetPersonalInfoUseCase;
   private getExperiencesUseCase: GetExperiencesUseCase;
   private getCertificationsUseCase: GetCertificationsUseCase;
@@ -32,10 +32,10 @@ class Container {
   private getProjectsUseCase: GetProjectsUseCase;
 
   private constructor() {
-    // Inicializar repositorio
+    // Initialize repository
     this.repository = new PortfolioRepository();
 
-    // Inicializar casos de uso con sus dependencias
+    // Initialize use cases with their dependencies
     this.getPersonalInfoUseCase = new GetPersonalInfoUseCase(this.repository);
     this.getExperiencesUseCase = new GetExperiencesUseCase(this.repository);
     this.getCertificationsUseCase = new GetCertificationsUseCase(this.repository);
@@ -53,7 +53,7 @@ class Container {
     return Container.instance;
   }
 
-  // Getters para casos de uso
+  // Use case getters
   public getGetPersonalInfoUseCase(): GetPersonalInfoUseCase {
     return this.getPersonalInfoUseCase;
   }
@@ -87,5 +87,5 @@ class Container {
   }
 }
 
-// Exportar instancia singleton
+// Export singleton instance
 export const container = Container.getInstance();

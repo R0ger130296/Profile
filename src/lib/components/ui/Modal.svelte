@@ -5,7 +5,7 @@
   import { Icon } from './index';
   import { useBodyScrollLock } from '$lib/composables';
 
-  // Props - Para Svelte 5, usar props tradicionales con bind:isOpen en el padre
+  // Props - For Svelte 5, use traditional props with bind:isOpen in parent
   export let isOpen = false;
   export let title = '';
   export let subtitle: string | undefined = undefined;
@@ -21,7 +21,7 @@
     if (isOpen) {
       unlock();
       dispatch('close');
-      // Actualizar el prop para que el binding funcione
+      // Update the prop so the binding works
       isOpen = false;
     }
   }
@@ -51,11 +51,11 @@
     event.stopPropagation();
   }
 
-  // Manejar scroll lock cuando se abre/cierra
+  // Handle scroll lock when opening/closing
   $: if (browser) {
     if (isOpen) {
       lock();
-      // Focus en el modal después de la animación
+      // Focus on modal after animation
       setTimeout(() => {
         modalElement?.focus();
       }, 100);
@@ -64,7 +64,7 @@
     }
   }
 
-  // Event listener para Escape
+  // Event listener for Escape
   onMount(() => {
     if (browser) {
       window.addEventListener('keydown', handleKeydown);
@@ -74,7 +74,7 @@
   onDestroy(() => {
     if (browser) {
       window.removeEventListener('keydown', handleKeydown);
-      // Asegurar unlock al desmontar
+      // Ensure unlock on unmount
       unlock();
     }
   });
@@ -84,47 +84,46 @@
   <!-- Backdrop -->
   <div
     transition:fade={{ duration: 200 }}
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-primary-900/60 backdrop-blur-sm"
     on:click={handleBackdropClick}
     on:keydown={handleBackdropKeydown}
-    role="button"
-    tabindex="0"
-    aria-label="Cerrar modal"
-    aria-modal="true"
+    role="presentation"
+    tabindex="-1"
+    aria-hidden="true"
   >
-    <!-- Contenido del modal -->
+    <!-- Modal Content -->
     <div
       bind:this={modalElement}
-      class="relative {maxWidth} w-full max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden focus:outline-none"
+      class="relative {maxWidth} w-full max-h-[90vh] bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden focus:outline-none border border-primary-100"
       on:click={handleContentClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
       tabindex="-1"
-      transition:fly={{ y: 20, duration: 300 }}
+      transition:fly={{ y: 16, duration: 250 }}
     >
-      <!-- Header del modal -->
-      <div class="flex items-center justify-between p-5 sm:p-6 border-b border-gray-200 bg-gradient-to-r from-primary-50 to-secondary-50">
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between p-5 sm:p-6 lg:p-8 border-b border-primary-100 bg-gradient-to-r from-primary-50/80 to-white">
         <div class="flex-1 pr-4 min-w-0">
-          <h3 id="modal-title" class="text-lg sm:text-xl font-bold text-gray-900 mb-1 truncate">
+          <h3 id="modal-title" class="text-lg sm:text-xl lg:text-2xl font-semibold text-primary-800 mb-1 truncate">
             {title}
           </h3>
           {#if subtitle}
-            <p class="text-sm sm:text-base text-gray-600 truncate">{subtitle}</p>
+            <p class="text-sm sm:text-base text-primary-500 truncate">{subtitle}</p>
           {/if}
         </div>
         <button
           on:click={handleClose}
-          class="flex-shrink-0 w-9 h-9 rounded-full bg-white hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center transition-colors duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
-          aria-label="Cerrar modal"
+          class="shrink-0 w-9 h-9 lg:w-10 lg:h-10 rounded-xl bg-white hover:bg-primary-50 active:bg-primary-100 flex items-center justify-center transition-colors duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-secondary-400 focus:ring-offset-2 border border-primary-200"
+          aria-label="Close modal"
           type="button"
         >
-          <Icon name="X" size={18} color="#374151" />
+          <Icon name="X" size={18} color="#64748b" />
         </button>
       </div>
 
-      <!-- Contenido del modal -->
-      <div class="p-5 sm:p-6 overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-thin">
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 lg:p-8 overflow-y-auto max-h-[calc(90vh-120px)] scrollbar-thin">
         <slot />
       </div>
     </div>
