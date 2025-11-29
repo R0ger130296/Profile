@@ -7,6 +7,7 @@
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
   import Languages from '$lib/components/portfolio/Languages.svelte';
   import References from '$lib/components/portfolio/References.svelte';
+  import Experience from '$lib/components/portfolio/Experience.svelte';
   import { ScrollToTop } from '$lib/components/ui';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
@@ -58,7 +59,7 @@
 
 <svelte:head>
   <title>Roger Cedeño - Software Engineer | Full Stack Developer</title>
-  <meta name="description" content="Portafolio profesional de Roger Cedeño - Desarrollador Full Stack con experiencia en React, Next.js, NestJS, Spring Boot y más. Especializado en desarrollo de aplicaciones web y móviles escalables." />
+  <meta name="description" content="Portafolio profesional de Roger Cedeño - Desarrollador Full Stack con experiencia en React, Next.js, NestJS, Spring Boot y más. Especializado en desarrollo de[...]" />
   <meta name="keywords" content="Roger Cedeño, Full Stack Developer, Software Engineer, React, Next.js, NestJS, Spring Boot, TypeScript, Portfolio" />
   <meta name="author" content="Roger Cedeño" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -98,7 +99,7 @@
     <div class="hidden xl:block absolute left-8 2xl:left-16 top-0 bottom-0 w-px bg-linear-to-b from-secondary-300 via-primary-200 to-transparent"></div>
     
     <!-- Content Container -->
-    <div class="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pb-16 sm:pb-20 lg:pb-24 space-y-8 sm:space-y-12 lg:space-y-16 xl:space-y-20 pt-16 sm:pt-20 lg:pt-24 relative z-10">
+    <div class="max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pb-16 sm:pb-20 lg:pb-24 space-y-8 sm:space-y-12 lg:space-y-16 xl:space-y-20 pt-16 sm:pt-20 lg:[...]" >
       
       <!-- About Section -->
       <div class="section-content initially-visible">
