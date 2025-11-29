@@ -194,7 +194,8 @@
       transform: translateY(16px);
     }
 
-    .section-content.animate-in {
+    /* Used by JavaScript - do not remove */
+    :global(.section-content.animate-in) {
       opacity: 1;
       transform: translateY(0);
     }

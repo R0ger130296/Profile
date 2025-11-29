@@ -41,6 +41,13 @@
     }
   }
 
+  function handleBackdropKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClose();
+    }
+  }
+
   function handleContentClick(event: MouseEvent): void {
     event.stopPropagation();
   }
@@ -81,14 +88,15 @@
     transition:fade={{ duration: 200 }}
     class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8 bg-primary-900/60 backdrop-blur-sm"
     on:click={handleBackdropClick}
-    role="presentation"
-    aria-hidden="true"
+    on:keydown={handleBackdropKeydown}
+    role="button"
+    tabindex="0"
+    aria-label="Close modal"
   >
     <!-- Modal Content -->
     <div
       bind:this={modalElement}
       class="relative {maxWidth} w-full max-h-[90vh] bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden focus:outline-none border border-primary-100"
-      on:click={handleContentClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
