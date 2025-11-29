@@ -2,7 +2,6 @@
   import Header from '$lib/components/portfolio/Header.svelte';
   import Hero from '$lib/components/portfolio/Hero.svelte';
   import About from '$lib/components/portfolio/About.svelte';
-  import Experience from '$lib/components/portfolio/Experience.svelte';
   import Education from '$lib/components/portfolio/Education.svelte';
   import Skills from '$lib/components/portfolio/Skills.svelte';
   import Certifications from '$lib/components/portfolio/Certifications.svelte';
@@ -149,10 +148,6 @@
       <!-- Divider -->
       <div class="divider"></div>
       
-      <!-- References Section -->
-      <div class="section-content initially-visible">
-        <References />
-      </div>
     </div>
   </main>
 
